@@ -3,6 +3,7 @@ import './globals.css'
 import { Navbar } from '@/app/components/navbar'
 import { Toaster } from 'sonner'
 
+// CI Pipeline Test: Phase 5 Task 7 - Pipeline verification
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
