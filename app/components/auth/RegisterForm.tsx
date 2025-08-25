@@ -60,7 +60,7 @@ export function RegisterForm() {
           {error}
         </div>
       )}
-      
+
       <div className="space-y-2">
         <label htmlFor="fullName" className="text-sm font-medium">
           Full Name
@@ -75,7 +75,7 @@ export function RegisterForm() {
           required
         />
       </div>
-      
+
       <div className="space-y-2">
         <label htmlFor="email" className="text-sm font-medium">
           Email
@@ -90,7 +90,7 @@ export function RegisterForm() {
           required
         />
       </div>
-      
+
       <div className="space-y-2">
         <label htmlFor="password" className="text-sm font-medium">
           Password
@@ -105,7 +105,7 @@ export function RegisterForm() {
           required
         />
       </div>
-      
+
       <div className="space-y-2">
         <label htmlFor="confirmPassword" className="text-sm font-medium">
           Confirm Password
@@ -120,7 +120,7 @@ export function RegisterForm() {
           required
         />
       </div>
-      
+
       <button
         type="submit"
         disabled={loading}

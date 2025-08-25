@@ -44,36 +44,36 @@ create policy "Admins can view all profiles" on profiles
 create table if not exists loan_applications (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users(id) on delete cascade not null,
-  
+
   -- Loan details
   amount decimal(12,2) not null check (amount > 0),
   tenure_months integer not null check (tenure_months > 0),
   purpose text not null,
-  
+
   -- Applicant details
   monthly_income decimal(10,2) not null check (monthly_income > 0),
   existing_debts decimal(10,2) default 0 check (existing_debts >= 0),
   credit_score integer check (credit_score >= 300 and credit_score <= 900),
   employment_type text not null,
   employment_years decimal(3,1) check (employment_years >= 0),
-  
+
   -- Application status
   status application_status default 'draft',
-  
+
   -- AI Decision
   ai_decision loan_status,
   ai_confidence decimal(3,2) check (ai_confidence >= 0 and ai_confidence <= 1),
   ai_reasoning text,
-  
+
   -- EMI and DTI calculations
   calculated_emi decimal(10,2),
   debt_to_income_ratio decimal(5,2),
-  
+
   -- Admin override
   admin_decision loan_status,
   admin_notes text,
   admin_user_id uuid references auth.users(id),
-  
+
   -- Timestamps
   created_at timestamp with time zone default timezone('utc'::text, now()) not null,
   updated_at timestamp with time zone default timezone('utc'::text, now()) not null,
@@ -96,6 +96,47 @@ create policy "Users can update their own draft applications" on loan_applicatio
 
 create policy "Admins can view all applications" on loan_applications
   for all using (
+    exists (
+      select 1 from profiles
+      where id = auth.uid() and role = 'admin'
+    )
+  );
+
+-- Decisions table (AI scoring results)
+create table if not exists decisions (
+  id uuid default gen_random_uuid() primary key,
+  loan_id uuid references loan_applications(id) on delete cascade not null,
+  decision text not null check (decision in ('approve', 'reject', 'needs_review')),
+  score decimal(3,2) not null check (score >= 0 and score <= 1),
+  reasons text[] not null,
+  input_hash text not null,
+  created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS on decisions
+alter table decisions enable row level security;
+
+-- Decisions RLS policies
+create policy "Users can view decisions for their applications" on decisions
+  for select using (
+    exists (
+      select 1 from loan_applications
+      where id = loan_id and user_id = auth.uid()
+    )
+  );
+
+create policy "Owners and admins can create decisions" on decisions
+  for insert with check (
+    exists (
+      select 1 from loan_applications la
+      left join profiles p on p.id = auth.uid()
+      where la.id = loan_id 
+      and (la.user_id = auth.uid() or p.role = 'admin')
+    )
+  );
+
+create policy "Admins can view all decisions" on decisions
+  for select using (
     exists (
       select 1 from profiles
       where id = auth.uid() and role = 'admin'
@@ -174,6 +215,10 @@ create index if not exists idx_loan_applications_status on loan_applications(sta
 create index if not exists idx_loan_applications_ai_decision on loan_applications(ai_decision);
 create index if not exists idx_loan_applications_created_at on loan_applications(created_at);
 create index if not exists idx_loan_applications_submitted_at on loan_applications(submitted_at);
+
+create index if not exists idx_decisions_loan_id on decisions(loan_id);
+create index if not exists idx_decisions_created_at on decisions(created_at desc);
+create index if not exists idx_decisions_loan_hash on decisions(loan_id, input_hash);
 
 create index if not exists idx_application_documents_application_id on application_documents(application_id);
 create index if not exists idx_application_documents_document_type on application_documents(document_type);
