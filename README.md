@@ -221,13 +221,13 @@ CMD ["node", "server.js"]
    ```bash
    # Install Docker
    curl -fsSL https://get.docker.com | sh
-   
+
    # Create directories
    sudo mkdir -p /opt/ai-loan-approval /var/lib/ai-loan-approval
-   
+
    # Copy infrastructure scripts
    scp infra/*.sh ubuntu@vm-ip:/opt/ai-loan-approval/
-   
+
    # Create environment file
    sudo nano /etc/ai-loan-approval.env
    ```
@@ -503,14 +503,14 @@ The Jenkinsfile defines a comprehensive CI/CD pipeline with the following stages
 ```groovy
 pipeline {
     agent any
-    
+
     environment {
         REGISTRY_USER = 'your-dockerhub-username'
         IMAGE_NAME = 'ai-loan-approval'
         VM_HOST = 'your-vm-ip'
         VM_USER = 'ubuntu'
     }
-    
+
     stages {
         stage('Checkout') { /* Source code retrieval */ }
         stage('Setup Node.js') { /* Environment preparation */ }
