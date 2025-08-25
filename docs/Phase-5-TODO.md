@@ -7,7 +7,7 @@
 - [ ] Create /etc/ai-loan-approval.env on VM (runtime env)
 
 ## Code & Infra
-- [ ] Add Dockerfile (multi-stage, Next.js standalone)
+- [x] Add Dockerfile (multi-stage, Next.js standalone)
 - [ ] Add Jenkinsfile (stages: checkout→test→build→docker→push→deploy)
 - [ ] Add /infra/deploy.sh and /infra/rollback.sh
 - [ ] Add /infra/healthcheck.sh and /infra/README.md
