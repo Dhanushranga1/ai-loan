@@ -13,7 +13,7 @@ export default function HomePage() {
             🏦 AI Loan Approval System
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Experience fast, fair, and transparent loan approvals powered by advanced AI technology. 
+            Experience fast, fair, and transparent loan approvals powered by advanced AI technology.
             Get instant decisions with clear explanations.
           </p>
           <div className="space-x-4">
@@ -44,7 +44,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                Our AI analyzes your application and provides immediate feedback 
+                Our AI analyzes your application and provides immediate feedback
                 based on transparent criteria.
               </p>
             </CardContent>
@@ -62,7 +62,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                Every decision comes with clear explanations of the factors 
+                Every decision comes with clear explanations of the factors
                 that influenced the outcome.
               </p>
             </CardContent>
@@ -80,7 +80,7 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                Bank-level encryption and privacy controls ensure your 
+                Bank-level encryption and privacy controls ensure your
                 information remains safe and confidential.
               </p>
             </CardContent>

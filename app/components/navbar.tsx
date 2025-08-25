@@ -11,7 +11,7 @@ export function Navbar() {
           <span className="text-2xl">🏦</span>
           <span className="font-bold text-xl">AI Loan Approval</span>
         </Link>
-        
+
         <div className="ml-auto flex items-center space-x-4">
           <Link href="/dashboard">
             <Button variant="ghost">Dashboard</Button>

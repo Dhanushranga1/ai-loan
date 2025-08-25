@@ -47,7 +47,7 @@ export default function NewLoanPage() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <label htmlFor="purpose" className="text-sm font-medium">
                     Loan Purpose
