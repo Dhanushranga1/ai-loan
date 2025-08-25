@@ -12,12 +12,13 @@ import {
 } from '@/lib/decision'
 import { generateInputHash, extractFeatures } from '@/lib/features'
 import { insertAuditLog } from '@/app/lib/audit'
+import { rateLimit, getRateLimitIdentifier, RATE_LIMITS } from '@/lib/rate-limit'
 
 interface DecideParams {
   id: string
 }
 
-export async function POST(
+async function decideHandler(
   request: NextRequest,
   { params }: { params: DecideParams }
 ) {
@@ -136,6 +137,45 @@ export async function POST(
       { status: 500 }
     )
   }
+}
+
+// Apply rate limiting to the decision endpoint
+export async function POST(request: NextRequest, context: { params: DecideParams }) {
+  // Apply rate limiting
+  const user = await getUser() // Get user for rate limiting identifier
+  const identifier = getRateLimitIdentifier(request, user?.id)
+  const rateLimitResult = rateLimit(identifier, RATE_LIMITS.LOAN_DECISION)
+  
+  if (!rateLimitResult.success) {
+    return new Response(
+      JSON.stringify({
+        error: rateLimitResult.message,
+        limit: rateLimitResult.limit,
+        remaining: rateLimitResult.remaining,
+        resetTime: rateLimitResult.resetTime
+      }),
+      {
+        status: 429,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+          'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+          'X-RateLimit-Reset': rateLimitResult.resetTime.toString(),
+          'Retry-After': Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString()
+        }
+      }
+    )
+  }
+  
+  // Call the actual handler
+  const response = await decideHandler(request, context)
+  
+  // Add rate limit headers to successful responses
+  response.headers.set('X-RateLimit-Limit', rateLimitResult.limit.toString())
+  response.headers.set('X-RateLimit-Remaining', rateLimitResult.remaining.toString())
+  response.headers.set('X-RateLimit-Reset', rateLimitResult.resetTime.toString())
+  
+  return response
 }
 
 // Helper function to get new loan status (duplicated from decision.ts to avoid circular import)

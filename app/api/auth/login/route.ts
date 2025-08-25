@@ -1,9 +1,35 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
+import { rateLimit, getRateLimitIdentifier, RATE_LIMITS } from '@/lib/rate-limit'
 
 export async function POST(request: NextRequest) {
   try {
+    // Apply rate limiting to login attempts
+    const identifier = getRateLimitIdentifier(request)
+    const rateLimitResult = rateLimit(identifier, RATE_LIMITS.AUTH)
+    
+    if (!rateLimitResult.success) {
+      return new Response(
+        JSON.stringify({
+          error: rateLimitResult.message,
+          limit: rateLimitResult.limit,
+          remaining: rateLimitResult.remaining,
+          resetTime: rateLimitResult.resetTime
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': rateLimitResult.resetTime.toString(),
+            'Retry-After': Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString()
+          }
+        }
+      )
+    }
+
     const body = await request.json()
     const { email, password } = body
 

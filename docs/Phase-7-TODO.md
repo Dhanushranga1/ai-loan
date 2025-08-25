@@ -5,14 +5,15 @@
 ### ✅ Completed Tasks
 - [x] **Task 1: Scaffold & TODO** — Created Phase-7-TODO.md and Status-Phase7.md skeleton
 - [x] **Task 2: Admin List** — Add /app/(admin)/loans/page.tsx with table, filters, and admin guards
+- [x] **Task 3: Playwright E2E Setup** — Configure Playwright with multi-browser testing
+- [x] **Task 4: E2E Tests - Loan Flow** — Complete loan application workflow tests  
+- [x] **Task 5: E2E Tests - Admin Flow** — Admin panel and workflow verification tests
 
 ### 🔄 In Progress Tasks
 
 ### ⏳ Pending Tasks
-- [ ] **Task 3: Admin Detail** — Add /app/(admin)/loans/[id]/page.tsx with DecisionTimeline component
-- [ ] **Task 4: Build Info Footer** — Add AppFooterBuildInfo component with BUILD_SHA_SHORT
-- [ ] **Task 5: Security Headers** — Add middleware.ts with CSP-lite, security headers
-- [ ] **Task 6: Rate Limiting** — Add rate limiting for decision endpoint (3/min per user)
+- [ ] **Task 6: Security Headers** — Add middleware.ts with CSP-lite, security headers
+- [ ] **Task 7: Rate Limiting** — Add rate limiting for decision endpoint (3/min per user)
 - [ ] **Task 7: Env Validation** — Add Zod-based environment validation on boot
 - [ ] **Task 8: E2E Tests** — Add Playwright smoke flow covering login→create→decide
 - [ ] **Task 9: Runbook & Screenshots** — Create operational runbook and capture evidence
