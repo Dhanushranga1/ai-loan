@@ -4,11 +4,11 @@
 
 ### ✅ Completed Tasks
 - [x] **Task 1: Scaffold & TODO** — Created Phase-7-TODO.md and Status-Phase7.md skeleton
+- [x] **Task 2: Admin List** — Add /app/(admin)/loans/page.tsx with table, filters, and admin guards
 
 ### 🔄 In Progress Tasks
 
 ### ⏳ Pending Tasks
-- [ ] **Task 2: Admin List** — Add /app/(admin)/loans/page.tsx with table, filters, and admin guards
 - [ ] **Task 3: Admin Detail** — Add /app/(admin)/loans/[id]/page.tsx with DecisionTimeline component
 - [ ] **Task 4: Build Info Footer** — Add AppFooterBuildInfo component with BUILD_SHA_SHORT
 - [ ] **Task 5: Security Headers** — Add middleware.ts with CSP-lite, security headers
