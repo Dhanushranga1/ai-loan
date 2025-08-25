@@ -1,0 +1,57 @@
+# PowerPoint Presentation Placeholder
+
+## 🖼️ PPTX PLACEHOLDER - TO BE REPLACED
+
+**Filename**: Review1-Slides.pptx  
+**Format**: PowerPoint presentation  
+**Slides**: 12 slides with speaker notes
+
+## 📋 Content Description
+This PowerPoint presentation should contain:
+
+### Slide Structure (12 slides)
+1. **Title Slide**: Project name, stack badges, team info
+2. **Problem & Objectives**: Problem statement and key objectives
+3. **Scope & Assumptions**: In/out scope with assumptions
+4. **System Architecture**: Architecture diagram with component overview
+5. **Database & Security**: ERD and RLS policy explanation
+6. **AI Scoring & Guardrails**: Scoring logic with weights and thresholds
+7. **CI/CD Pipeline**: 10-stage pipeline visualization
+8. **Demo Flow**: Live demonstration workflow
+9. **Evidence**: Screenshots and proof of implementation
+10. **Risks & Mitigations**: Technical and business risk management
+11. **Roadmap**: Post-Review-1 enhancement plans
+12. **Q&A**: Common questions with prepared answers
+
+### Visual Elements
+- **Embedded Diagrams**: All PNG images from `/docs/artifacts/`
+- **Consistent Branding**: Blue/purple color scheme, Inter font
+- **Professional Layout**: Clean, minimal design
+- **Stack Badges**: Technology logos (Next.js, Supabase, Jenkins, Docker)
+
+### Speaker Notes
+- Comprehensive notes for each slide
+- Timing guidance (8-minute presentation)
+- Technical talking points
+- Demo preparation instructions
+
+## 🎨 Design Guidelines
+- **Template**: Professional business presentation style
+- **Colors**: Primary blue (#3b82f6), accent purple (#8b5cf6)
+- **Typography**: Inter font family, consistent sizing
+- **Layout**: Clean layouts with appropriate white space
+- **Images**: High-quality embedded diagrams and screenshots
+
+## 📝 Creation Notes
+- Source: `/docs/Review1-Slides-Content.md` (detailed content)
+- Tool: Microsoft PowerPoint, Google Slides, or Keynote
+- Include: All diagrams from artifacts folder
+- Features: Smooth transitions, professional animations
+- Output: PPTX format suitable for presentation and submission
+
+## 🎯 Presentation Features
+- **Duration**: 8 minutes + Q&A
+- **Live Demo**: Integrated demonstration workflow
+- **Evidence**: Screenshot documentation of working system
+- **Technical Depth**: Appropriate for DevOps engineering audience
+- **Backup**: Static screenshots ready if demo fails

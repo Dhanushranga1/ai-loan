@@ -5,12 +5,12 @@
 ### ✅ Completed Tasks
 - [x] **Task 1: Scaffold TODO & Status files** — Created Phase-6-TODO.md and Status-Phase6.md skeleton
 - [x] **Task 2: Generate Diagrams (PNGs)** — Created Mermaid diagrams and placeholder images for architecture, DB ERD, CI/CD, and scoring logic
+- [x] **Task 3: Abstract PDF** — Created comprehensive project abstract with placeholder PDF
+- [x] **Task 4: Slides (PPTX)** — Created 12-slide presentation content with speaker notes and placeholder PPTX
 
 ### 🔄 In Progress Tasks
 
 ### ⏳ Pending Tasks
-- [ ] **Task 3: Abstract PDF** — Create AI-Loan-Approval-Abstract.pdf with project-specific content
-- [ ] **Task 4: Slides (PPTX)** — Build 12-slide presentation with speaker notes and embedded diagrams
 - [ ] **Task 5: Screenshots/Evidence** — Capture 10 required screenshots for Review-1 evidence
 - [ ] **Task 6: README Update** — Add Review-1 section with links to all deliverables
 - [ ] **Task 7: Release Tag** — Create and push v0.1-review1 git tag
