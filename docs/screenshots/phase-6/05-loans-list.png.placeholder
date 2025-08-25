@@ -1,0 +1,58 @@
+# Loans List Page - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 05-loans-list.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture loans listing page showing user's loan applications with status indicators.
+
+### Key Elements to Include:
+- **Page Title**: "My Loan Applications" or similar
+- **Loan Table/Cards**: List of loan applications
+- **Status Badges**: Color-coded status (Pending, Approved, Rejected, Under Review)
+- **Loan Details**: Amount, term, application date, purpose
+- **Action Buttons**: "View Details", "New Application" buttons
+- **Pagination**: If multiple loans exist
+- **Empty State**: Or placeholder if no loans exist
+
+### Table/Card Information:
+- **Loan Amount**: Formatted currency display
+- **Term**: Loan duration in months
+- **Status**: Visual status indicators with colors
+- **Application Date**: Formatted timestamp
+- **Purpose**: Loan purpose/category
+- **Actions**: View details, edit (if applicable)
+
+### Visual Guidelines:
+- **Layout**: Clean table or card-based design
+- **Colors**: Status-specific color coding (green=approved, red=rejected, yellow=pending)
+- **Typography**: Consistent styling with proper hierarchy
+- **Spacing**: Good use of whitespace for readability
+- **Responsive**: Mobile-friendly responsive design
+
+### Capture Instructions:
+1. Navigate to loans listing page (/loans)
+2. Ensure user has at least 1-2 loan applications
+3. Show different status types if possible
+4. Include page header and navigation
+5. Capture full page content
+6. Ensure all UI elements are properly styled
+
+### Data Examples:
+- **Approved Loan**: $25,000, 36 months, Personal, Approved
+- **Pending Loan**: $50,000, 60 months, Home Improvement, Pending
+- **Under Review**: $75,000, 84 months, Business, Under Review
+
+### Quality Checklist:
+- [ ] Multiple loans visible with different statuses
+- [ ] Status badges clearly color-coded
+- [ ] Loan details properly formatted
+- [ ] Navigation and page structure visible
+- [ ] Professional table/card design
+- [ ] Responsive layout and clean styling
+
+### Purpose:
+Shows complete loan management interface with RLS data isolation working correctly.

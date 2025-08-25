@@ -1,0 +1,88 @@
+# Git Tag and Release - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 10-commit-and-tag.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture Git repository showing v0.1-review1 tag and release information.
+
+### Key Elements to Include:
+- **Repository**: GitHub/GitLab repository main page
+- **Tag**: v0.1-review1 tag prominently displayed
+- **Release**: Release page with description and assets
+- **Commit**: Latest commit hash and message
+- **Branch**: Main branch with tag indicator
+- **Repository Stats**: Commits, branches, tags count
+- **Release Notes**: Summary of Phase 6 deliverables
+
+### Expected Tag Information:
+- **Tag Name**: v0.1-review1
+- **Target**: Main branch (latest commit)
+- **Release Title**: "Review-1 Deliverables - AI Loan Approval MVP"
+- **Description**: Summary of completed features and deliverables
+- **Assets**: Source code archive (zip/tar.gz)
+- **Commit SHA**: Latest commit identifier
+
+### Release Description Example:
+```
+# AI Loan Approval System - Review-1 Release
+
+## 🎯 MVP Features Completed
+- ✅ Full-stack Next.js application with Supabase backend
+- ✅ User authentication with Row Level Security (RLS)
+- ✅ Loan application lifecycle (create → list → view → decide)
+- ✅ AI scoring engine with transparent explanations
+- ✅ Complete CI/CD pipeline with Jenkins and Docker
+- ✅ Production deployment with health monitoring
+
+## 📋 Review-1 Deliverables
+- 📄 One-page project abstract (PDF)
+- 🎤 12-slide presentation with speaker notes
+- 📸 Complete screenshot evidence
+- 🏗️ Architecture and technical diagrams
+- 📚 Comprehensive documentation
+
+## 🚀 Technical Stack
+Next.js • Supabase • TypeScript • Tailwind CSS • Jenkins • Docker
+
+## 🔧 DevOps Features
+- 10-stage CI/CD pipeline
+- Automated testing and deployment
+- Health checks and rollback capabilities
+- Container orchestration
+```
+
+### Visual Guidelines:
+- **Platform**: GitHub releases page or similar
+- **Layout**: Clean release page with tag information
+- **Metadata**: Tag, commit, date, author information
+- **Assets**: Download links for source code
+- **Navigation**: Repository breadcrumbs and navigation
+
+### Capture Instructions:
+1. Navigate to repository releases page
+2. Show v0.1-review1 tag/release
+3. Include release title and description
+4. Show commit information and tag details
+5. Capture full release page with metadata
+6. Include repository navigation context
+
+### Alternative Views:
+- **Tags Page**: List of all repository tags
+- **Commit History**: Main branch with tag markers
+- **Release Assets**: Downloadable files and source code
+- **Tag Comparison**: Changes since previous tag
+
+### Quality Checklist:
+- [ ] v0.1-review1 tag clearly visible
+- [ ] Release description with deliverables summary
+- [ ] Commit hash and branch information shown
+- [ ] Professional repository interface
+- [ ] Tag metadata (date, author, target) visible
+- [ ] Source code assets available for download
+
+### Purpose:
+Demonstrates proper version control practices with tagged releases for Review-1 submission.

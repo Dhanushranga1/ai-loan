@@ -7,11 +7,11 @@
 - [x] **Task 2: Generate Diagrams (PNGs)** — Created Mermaid diagrams and placeholder images for architecture, DB ERD, CI/CD, and scoring logic
 - [x] **Task 3: Abstract PDF** — Created comprehensive project abstract with placeholder PDF
 - [x] **Task 4: Slides (PPTX)** — Created 12-slide presentation content with speaker notes and placeholder PPTX
+- [x] **Task 5: Screenshots/Evidence** — Created 10 screenshot placeholders with detailed capture instructions
 
 ### 🔄 In Progress Tasks
 
 ### ⏳ Pending Tasks
-- [ ] **Task 5: Screenshots/Evidence** — Capture 10 required screenshots for Review-1 evidence
 - [ ] **Task 6: README Update** — Add Review-1 section with links to all deliverables
 - [ ] **Task 7: Release Tag** — Create and push v0.1-review1 git tag
 - [ ] **Task 8: Status Report** — Complete Status-Phase6.md with outputs, links, and notes

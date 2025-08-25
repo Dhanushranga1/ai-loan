@@ -1,0 +1,44 @@
+# Docker Hub Tags - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 02-dockerhub-tags.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture Docker Hub repository showing published container images with proper tagging.
+
+### Key Elements to Include:
+- **Repository Name**: ai-loan-approval container repository
+- **Image Tags**: `:latest` and commit-based tags (e.g., `:sha-a1b2c3d`)
+- **Push Timestamps**: Recent push times showing CI/CD activity
+- **Image Sizes**: Layer sizes and total image size
+- **Architecture**: amd64/linux platform information
+- **Registry URL**: Full Docker Hub repository path
+
+### Visual Guidelines:
+- **Browser**: Clean Docker Hub interface
+- **View**: Repository tags/overview page
+- **Sorting**: Sort by newest/most recent pushes
+- **Display**: Show multiple recent tags
+- **UI Elements**: Include Docker Hub navigation and metadata
+
+### Capture Instructions:
+1. Navigate to Docker Hub repository page
+2. Go to "Tags" tab showing all image versions
+3. Ensure latest images from CI/CD pipeline are visible
+4. Show both `:latest` and SHA-based tags
+5. Include timestamp and size information
+6. Capture full repository page with metadata
+
+### Quality Checklist:
+- [ ] Multiple image tags visible (latest + commit SHAs)
+- [ ] Recent push timestamps shown
+- [ ] Image sizes and architecture info displayed
+- [ ] Repository name and path clearly visible
+- [ ] Professional Docker Hub interface
+- [ ] High resolution and clear metadata
+
+### Purpose:
+Proves automated Docker image publishing from Jenkins CI/CD pipeline to registry.

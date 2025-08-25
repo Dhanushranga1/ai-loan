@@ -1,0 +1,52 @@
+# Application Home Page - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 04-app-home.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture main application dashboard/home page after user login.
+
+### Key Elements to Include:
+- **Navigation**: Top navigation bar with user authentication
+- **Dashboard**: Main dashboard with loan overview
+- **User Info**: Logged-in user profile indicator
+- **Action Buttons**: "New Loan Application", "View Loans" buttons
+- **Stats/Metrics**: Loan statistics or summary cards
+- **Branding**: Application title and professional styling
+- **Footer**: Footer with system information or links
+
+### Visual Guidelines:
+- **Browser**: Chrome/Firefox with clean interface
+- **Resolution**: Full HD for optimal clarity
+- **UI Theme**: Professional blue/purple color scheme
+- **Layout**: Modern, responsive design with Tailwind CSS
+- **Typography**: Clean Inter font styling
+
+### Capture Instructions:
+1. Navigate to application URL (VM IP:3000)
+2. Complete user login/registration if needed
+3. Ensure main dashboard is fully loaded
+4. Show authenticated user state
+5. Include navigation and main content areas
+6. Capture full browser window
+
+### User Experience Elements:
+- **Authentication State**: User logged in successfully
+- **Navigation**: Clear menu structure
+- **Call-to-Action**: Prominent buttons for loan actions
+- **Responsive Design**: Professional layout and styling
+- **Accessibility**: Good contrast and readability
+
+### Quality Checklist:
+- [ ] User authentication state visible
+- [ ] Main navigation clearly shown
+- [ ] Dashboard content fully loaded
+- [ ] Professional UI design with proper styling
+- [ ] Action buttons and key features visible
+- [ ] High resolution and clear interface elements
+
+### Purpose:
+Demonstrates functional Next.js application with Supabase authentication and professional UI design.

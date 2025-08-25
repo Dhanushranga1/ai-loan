@@ -1,0 +1,68 @@
+# Supabase RLS Policies - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 08-rls-policies.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture Supabase dashboard showing Row Level Security policies for data isolation.
+
+### Key Elements to Include:
+- **Supabase Dashboard**: Authentication section or table editor
+- **Database Schema**: Tables list (profiles, loans, decisions, audit_logs)
+- **RLS Status**: Enabled indicators for all tables
+- **Policy List**: Individual policies for each table
+- **Policy Names**: Descriptive policy names (owner_access, admin_access)
+- **Policy Conditions**: SQL conditions for data access
+- **Table Structure**: Column names and types visible
+
+### Expected RLS Policies:
+#### profiles table:
+- **owner_access**: `auth.uid() = id`
+- **admin_access**: `(SELECT role FROM profiles WHERE id = auth.uid()) = 'admin'`
+
+#### loans table:
+- **owner_access**: `auth.uid() = user_id`
+- **admin_access**: `(SELECT role FROM profiles WHERE id = auth.uid()) = 'admin'`
+
+#### decisions table:
+- **owner_access**: `auth.uid() = (SELECT user_id FROM loans WHERE id = loan_id)`
+- **admin_access**: `(SELECT role FROM profiles WHERE id = auth.uid()) = 'admin'`
+
+#### audit_logs table:
+- **owner_access**: `auth.uid() = user_id`
+- **admin_access**: `(SELECT role FROM profiles WHERE id = auth.uid()) = 'admin'`
+
+### Visual Guidelines:
+- **Interface**: Supabase web dashboard
+- **Section**: Table editor or authentication policies
+- **View**: Policies tab for each table
+- **Highlighting**: RLS enabled status clearly visible
+- **Layout**: Clean dashboard interface
+
+### Capture Instructions:
+1. Log into Supabase project dashboard
+2. Navigate to table editor or authentication section
+3. Select one of the main tables (loans or profiles)
+4. Go to "Policies" or "RLS" tab
+5. Show enabled RLS status and policy list
+6. Capture full policy configuration screen
+
+### Alternative Views:
+- **Table Overview**: All tables with RLS enabled status
+- **Individual Policies**: Detailed view of specific policy
+- **SQL Editor**: Raw SQL policy definitions
+- **Authentication**: User management with role system
+
+### Quality Checklist:
+- [ ] RLS enabled status clearly visible
+- [ ] Multiple policies shown for data access control
+- [ ] Policy conditions readable and accurate
+- [ ] Professional Supabase dashboard interface
+- [ ] Table structure and relationships visible
+- [ ] Security configuration properly displayed
+
+### Purpose:
+Demonstrates database-level security implementation with Row Level Security for user data isolation.

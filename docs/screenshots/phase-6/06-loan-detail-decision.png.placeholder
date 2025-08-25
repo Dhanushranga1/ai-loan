@@ -1,0 +1,63 @@
+# Loan Decision Details - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 06-loan-detail-decision.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture loan detail page showing AI decision results with score and explanations.
+
+### Key Elements to Include:
+- **Loan Information**: Complete application details
+- **Decision Card**: AI scoring results prominently displayed
+- **Score**: Numerical score (0.0-1.0) with visual indicator
+- **Status**: Decision status (Approved/Rejected/Under Review)
+- **Confidence**: Model confidence percentage
+- **Explanations**: List of 3-6 decision reasons
+- **Model Used**: rule_based or logistic model indicator
+- **Decision Timestamp**: When decision was made
+
+### Decision Card Layout:
+- **Score Display**: Large, prominent score with progress indicator
+- **Status Badge**: Color-coded status (green/red/yellow)
+- **Reasons List**: Bulleted explanations in business language
+- **Technical Info**: Model type, confidence, processing time
+- **Action Buttons**: "Request Review" or "Accept" if applicable
+
+### Sample Decision Content:
+- **Score**: 0.68 (Under Review threshold)
+- **Status**: UNDER_REVIEW
+- **Reasons**: 
+  - "Excellent credit score demonstrates reliability"
+  - "Debt-to-income ratio is within acceptable range"
+  - "Employment history shows good stability"
+  - "Loan amount is reasonable relative to income"
+  - "Consider loan term impact on monthly payments"
+
+### Visual Guidelines:
+- **Design**: Card-based layout with clear hierarchy
+- **Colors**: Status-appropriate color scheme
+- **Typography**: Good contrast and readability
+- **Icons**: Relevant icons for score, reasons, status
+- **Layout**: Clean spacing and professional appearance
+
+### Capture Instructions:
+1. Navigate to specific loan detail page
+2. Trigger AI decision if not already completed
+3. Ensure decision card is fully rendered
+4. Show complete loan information and decision results
+5. Include page navigation and context
+6. Capture full page with all details visible
+
+### Quality Checklist:
+- [ ] AI decision results clearly displayed
+- [ ] Score and status prominently shown
+- [ ] Multiple explanations visible
+- [ ] Professional card design and layout
+- [ ] Loan details and decision context visible
+- [ ] Action buttons and navigation present
+
+### Purpose:
+Demonstrates AI scoring engine functionality with transparent explanations and professional UI.

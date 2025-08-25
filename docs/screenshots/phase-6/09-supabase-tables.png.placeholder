@@ -1,0 +1,74 @@
+# Supabase Database Tables - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 09-supabase-tables.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture Supabase table editor showing complete database schema with all tables.
+
+### Key Elements to Include:
+- **Tables Panel**: Left sidebar with all table names
+- **Table List**: profiles, loans, decisions, audit_logs
+- **Column Information**: Field names, types, constraints
+- **Relationships**: Foreign key connections
+- **Row Count**: Number of records in each table
+- **RLS Status**: Security indicators for each table
+- **Primary Keys**: UUID identifiers highlighted
+
+### Expected Tables Structure:
+
+#### profiles
+- **Columns**: id (uuid, PK), email (text), full_name (text), role (text), created_at, updated_at
+- **RLS**: Enabled
+- **Relationships**: One-to-many with loans, audit_logs
+
+#### loans
+- **Columns**: id (uuid, PK), user_id (uuid, FK), status (text), amount (numeric), term_months (integer), annual_income (numeric), credit_score (integer), debt_to_income_ratio (numeric), employment_years (numeric), purpose (text), input_hash (text), created_at, updated_at
+- **RLS**: Enabled
+- **Relationships**: Belongs to profiles, has one decision
+
+#### decisions
+- **Columns**: id (uuid, PK), loan_id (uuid, FK), status (text), score (numeric), reasons (jsonb), model_used (text), input_hash (text), confidence (numeric), created_at, updated_at
+- **RLS**: Enabled
+- **Relationships**: Belongs to loans
+
+#### audit_logs
+- **Columns**: id (uuid, PK), user_id (uuid, FK), loan_id (uuid, FK), decision_id (uuid, FK), action (text), metadata (jsonb), ip_address (text), user_agent (text), created_at
+- **RLS**: Enabled
+- **Relationships**: Links to all entities
+
+### Visual Guidelines:
+- **Interface**: Supabase table editor view
+- **Layout**: Tables list on left, table details on right
+- **Highlighting**: Show selected table with column details
+- **Metadata**: Display column types, constraints, indexes
+- **Status**: RLS and relationship indicators
+
+### Capture Instructions:
+1. Open Supabase project dashboard
+2. Navigate to table editor section
+3. Show tables panel with all 4 tables visible
+4. Select one table to show column details
+5. Include table metadata and relationship info
+6. Capture full table editor interface
+
+### Table Details to Show:
+- **Column Types**: uuid, text, numeric, integer, jsonb, timestamp
+- **Constraints**: Primary keys, foreign keys, not null
+- **Indexes**: Performance optimization indicators
+- **RLS Policies**: Security policy count per table
+- **Relationships**: Visual connection indicators
+
+### Quality Checklist:
+- [ ] All 4 tables visible in left panel
+- [ ] Selected table shows complete column structure
+- [ ] Data types and constraints clearly displayed
+- [ ] RLS enabled status visible for tables
+- [ ] Foreign key relationships indicated
+- [ ] Professional Supabase interface
+
+### Purpose:
+Shows complete database schema implementation with proper relationships and security configuration.

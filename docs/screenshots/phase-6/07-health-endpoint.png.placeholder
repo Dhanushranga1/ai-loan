@@ -1,0 +1,77 @@
+# Health Endpoint Response - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 07-health-endpoint.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture health endpoint API response showing system status and metrics.
+
+### Key Elements to Include:
+- **URL**: http://[VM-IP]:3000/api/health in address bar
+- **HTTP Status**: 200 OK status code
+- **Response Headers**: Content-Type: application/json
+- **JSON Response**: Formatted health check data
+- **Timestamp**: Current system time
+- **System Metrics**: Memory usage, uptime, performance data
+- **Environment**: Production environment indicator
+- **Version**: Application version information
+
+### Expected JSON Response Structure:
+```json
+{
+  "status": "ok",
+  "timestamp": "2025-08-25T10:30:00.000Z",
+  "uptime": "2h 15m 30s",
+  "environment": "production",
+  "version": "1.0.0",
+  "memory": {
+    "used": "145.2 MB",
+    "free": "2.8 GB",
+    "total": "4.0 GB"
+  },
+  "performance": {
+    "responseTime": "12ms",
+    "requestCount": 156,
+    "errorRate": "0.0%"
+  },
+  "database": {
+    "status": "connected",
+    "latency": "8ms"
+  }
+}
+```
+
+### Visual Guidelines:
+- **Tool**: Use browser, Postman, or curl with JSON formatter
+- **Formatting**: Pretty-printed JSON with syntax highlighting
+- **Browser**: Show browser interface with URL and response
+- **Headers**: Include response headers if using browser dev tools
+- **Status**: Highlight 200 OK status prominently
+
+### Capture Instructions:
+1. Navigate to health endpoint URL
+2. Ensure JSON response is properly formatted
+3. Show browser address bar with full URL
+4. Include HTTP status code (200 OK)
+5. Capture response body with readable formatting
+6. Include any browser dev tools if showing headers
+
+### Alternative Capture Methods:
+- **Browser**: Direct navigation with JSON formatter extension
+- **Postman**: API testing tool with response visualization
+- **curl + jq**: Terminal command with JSON formatting
+- **Browser DevTools**: Network tab showing request/response
+
+### Quality Checklist:
+- [ ] Health endpoint URL clearly visible
+- [ ] 200 OK status code shown
+- [ ] Complete JSON response displayed
+- [ ] Readable formatting and syntax highlighting
+- [ ] System metrics and status information present
+- [ ] Professional appearance suitable for demo
+
+### Purpose:
+Proves health monitoring functionality and demonstrates API endpoint for deployment verification.

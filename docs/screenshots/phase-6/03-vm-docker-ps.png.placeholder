@@ -1,0 +1,50 @@
+# VM Docker Containers - Screenshot Placeholder
+
+## 🖼️ SCREENSHOT PLACEHOLDER - TO BE REPLACED
+
+**Filename**: 03-vm-docker-ps.png  
+**Size**: 1920x1080 pixels  
+**Format**: PNG with high quality
+
+## 📋 Screenshot Requirements
+Capture VM terminal showing running Docker containers deployed via CI/CD pipeline.
+
+### Key Elements to Include:
+- **Command**: `docker ps` output showing active containers
+- **Container Name**: ai-loan-approval container running
+- **Image Tag**: Latest deployed image (with commit SHA)
+- **Port Mapping**: 3000:3000 port exposure
+- **Container Status**: "Up X minutes/hours" indicating healthy state
+- **Container ID**: Docker container identifier
+- **Created Time**: When container was started
+
+### Visual Guidelines:
+- **Terminal**: SSH session to production VM
+- **Theme**: Dark terminal theme with clear contrast
+- **Font**: Monospace font with good readability
+- **Window**: Full terminal window with command history
+- **Colors**: Syntax highlighting for better readability
+
+### Capture Instructions:
+1. SSH into production VM
+2. Run `docker ps` to show running containers
+3. Include full command output with headers
+4. Show ai-loan-approval container in "Up" status
+5. Include any additional system information if relevant
+6. Capture clean terminal window
+
+### Additional Commands to Include:
+- `docker ps` (main command)
+- `docker images` (to show local images)
+- `docker logs ai-loan-approval --tail 5` (recent logs)
+
+### Quality Checklist:
+- [ ] ai-loan-approval container visible and running
+- [ ] Port mappings clearly shown (3000:3000)
+- [ ] Container status shows healthy uptime
+- [ ] Image tag matches latest deployment
+- [ ] Terminal output is clear and readable
+- [ ] Professional terminal appearance
+
+### Purpose:
+Demonstrates successful container deployment and runtime status on production VM.
