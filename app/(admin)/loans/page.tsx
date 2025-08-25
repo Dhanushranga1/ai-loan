@@ -115,8 +115,8 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
           <div className="flex gap-4 flex-wrap">
             <form method="GET" className="flex gap-4 flex-wrap">
               <div className="flex gap-2">
-                <select 
-                  name="status" 
+                <select
+                  name="status"
                   defaultValue={searchParams.status || 'all'}
                   className="px-3 py-2 border rounded-md"
                 >
@@ -126,7 +126,7 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
                   <option value="rejected">Rejected</option>
                 </select>
               </div>
-              
+
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -140,7 +140,7 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
               <Button type="submit" variant="outline">
                 Apply Filters
               </Button>
-              
+
               {(searchParams.status || searchParams.search) && (
                 <Button asChild variant="ghost">
                   <a href="/loans">Clear Filters</a>
@@ -163,10 +163,10 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
                       <h3 className="text-lg font-semibold">
                         ${loan.amount.toLocaleString()}
                       </h3>
-                      <Badge 
+                      <Badge
                         variant={
-                          loan.status === 'approved' ? 'approved' : 
-                          loan.status === 'rejected' ? 'rejected' : 
+                          loan.status === 'approved' ? 'approved' :
+                          loan.status === 'rejected' ? 'rejected' :
                           loan.status === 'pending' ? 'pending' :
                           'default'
                         }
@@ -174,11 +174,11 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
                         {loan.status}
                       </Badge>
                     </div>
-                    
+
                     <p className="text-gray-600">
                       <strong>Purpose:</strong> {loan.purpose}
                     </p>
-                    
+
                     <p className="text-gray-600">
                       <strong>Applicant:</strong> {
                         loan.profiles && loan.profiles.length > 0
@@ -186,12 +186,12 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
                           : 'Unknown applicant'
                       }
                     </p>
-                    
+
                     <p className="text-sm text-gray-500">
                       Applied: {new Date(loan.created_at).toLocaleDateString()}
                     </p>
                   </div>
-                  
+
                   <div className="flex gap-2">
                     <Button asChild variant="outline" size="sm">
                       <a href={`/loans/${loan.id}`}>
@@ -217,7 +217,7 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
         <div className="flex justify-center gap-2 mt-8">
           {page > 1 && (
             <Button asChild variant="outline">
-              <a 
+              <a
                 href={`?${new URLSearchParams({
                   ...searchParams,
                   page: (page - 1).toString()
@@ -227,14 +227,14 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
               </a>
             </Button>
           )}
-          
+
           <span className="px-4 py-2 text-sm text-gray-600">
             Page {page} of {totalPages}
           </span>
-          
+
           {page < totalPages && (
             <Button asChild variant="outline">
-              <a 
+              <a
                 href={`?${new URLSearchParams({
                   ...searchParams,
                   page: (page + 1).toString()
@@ -257,7 +257,7 @@ function AdminLoansLoading() {
         <Skeleton className="h-9 w-64" />
         <Skeleton className="h-6 w-24" />
       </div>
-      
+
       <Card>
         <CardHeader>
           <Skeleton className="h-6 w-16" />
@@ -270,7 +270,7 @@ function AdminLoansLoading() {
           </div>
         </CardContent>
       </Card>
-      
+
       <div className="space-y-4">
         {[1, 2, 3].map((i) => (
           <Card key={i}>

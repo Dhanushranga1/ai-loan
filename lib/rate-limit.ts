@@ -29,15 +29,15 @@ export function rateLimit(
 ): RateLimitResult {
   const now = Date.now()
   const key = `rate_limit:${identifier}`
-  
+
   // Get current rate limit data
   const current = rateLimitStore.get(key)
-  
+
   // If no previous record or window has expired, reset
   if (!current || now > current.resetTime) {
     const resetTime = now + config.windowMs
     rateLimitStore.set(key, { count: 1, resetTime })
-    
+
     return {
       success: true,
       limit: config.maxRequests,
@@ -45,12 +45,12 @@ export function rateLimit(
       resetTime
     }
   }
-  
+
   // If within rate limit, increment count
   if (current.count < config.maxRequests) {
     current.count++
     rateLimitStore.set(key, current)
-    
+
     return {
       success: true,
       limit: config.maxRequests,
@@ -58,7 +58,7 @@ export function rateLimit(
       resetTime: current.resetTime
     }
   }
-  
+
   // Rate limit exceeded
   return {
     success: false,
@@ -80,7 +80,7 @@ export function getRateLimitIdentifier(
   if (userId) {
     return `user:${userId}`
   }
-  
+
   // Fall back to IP address
   const forwarded = req.headers.get('x-forwarded-for')
   const realIp = req.headers.get('x-real-ip')
@@ -98,7 +98,7 @@ export function withRateLimit(
   return async (req: NextRequest) => {
     const identifier = getRateLimitIdentifier(req)
     const result = rateLimit(identifier, config)
-    
+
     if (!result.success) {
       return new Response(
         JSON.stringify({
@@ -119,14 +119,14 @@ export function withRateLimit(
         }
       )
     }
-    
+
     // Add rate limit headers to successful responses
     const response = await handler(req)
-    
+
     response.headers.set('X-RateLimit-Limit', result.limit.toString())
     response.headers.set('X-RateLimit-Remaining', result.remaining.toString())
     response.headers.set('X-RateLimit-Reset', result.resetTime.toString())
-    
+
     return response
   }
 }
@@ -136,7 +136,7 @@ export function withRateLimit(
  */
 export function cleanupRateLimitStore() {
   const now = Date.now()
-  
+
   for (const [key, value] of rateLimitStore.entries()) {
     if (now > value.resetTime) {
       rateLimitStore.delete(key)
@@ -157,21 +157,21 @@ export const RATE_LIMITS = {
     windowMs: 60 * 1000, // 1 minute
     message: 'Too many loan decision requests. Please wait before submitting another application.'
   },
-  
+
   // 10 requests per minute for API calls
   API_GENERAL: {
     maxRequests: 10,
     windowMs: 60 * 1000,
     message: 'Too many API requests. Please slow down.'
   },
-  
+
   // 5 requests per minute for authentication
   AUTH: {
     maxRequests: 5,
     windowMs: 60 * 1000,
     message: 'Too many authentication attempts. Please wait before trying again.'
   },
-  
+
   // 20 requests per minute for data fetching
   DATA_FETCH: {
     maxRequests: 20,

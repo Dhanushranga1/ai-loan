@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     // Apply rate limiting to login attempts
     const identifier = getRateLimitIdentifier(request)
     const rateLimitResult = rateLimit(identifier, RATE_LIMITS.AUTH)
-    
+
     if (!rateLimitResult.success) {
       return new Response(
         JSON.stringify({

@@ -118,10 +118,10 @@ The tests expect these users to exist:
   full_name: 'Test Admin'
 }
 
-// Regular user  
+// Regular user
 {
   email: 'user@test.com',
-  password: 'testpassword123', 
+  password: 'testpassword123',
   role: 'user',
   full_name: 'Test User'
 }
@@ -151,7 +151,7 @@ import { TestHelpers } from './helpers'
 
 test('example test', async ({ page }) => {
   const helpers = new TestHelpers(page)
-  
+
   await helpers.loginAsUser('user@test.com', 'password')
   await helpers.fillLoanApplication({
     amount: 50000,

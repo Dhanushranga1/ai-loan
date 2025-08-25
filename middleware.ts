@@ -18,25 +18,25 @@ const securityHeaders = {
     "form-action 'self'",
     "upgrade-insecure-requests"
   ].join('; '),
-  
+
   // Prevent clickjacking
   'X-Frame-Options': 'DENY',
-  
+
   // Prevent MIME type sniffing
   'X-Content-Type-Options': 'nosniff',
-  
+
   // Enable XSS protection
   'X-XSS-Protection': '1; mode=block',
-  
+
   // Enforce HTTPS
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
-  
+
   // Control referrer information
   'Referrer-Policy': 'strict-origin-when-cross-origin',
-  
+
   // Prevent directory browsing
   'X-Robots-Tag': 'noindex, nofollow',
-  
+
   // Additional security headers
   'Permissions-Policy': [
     'camera=()',
@@ -63,7 +63,7 @@ export async function middleware(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith('/api/')) {
     response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate')
     response.headers.set('X-API-Version', '1.0')
-    
+
     // CORS handling for API routes
     if (req.method === 'OPTIONS') {
       response.headers.set('Access-Control-Allow-Origin', '*')
@@ -75,7 +75,7 @@ export async function middleware(req: NextRequest) {
 
   // Skip auth for public routes
   const publicRoutes = ['/login', '/register', '/api/auth', '/']
-  const isPublicRoute = publicRoutes.some(route => 
+  const isPublicRoute = publicRoutes.some(route =>
     req.nextUrl.pathname.startsWith(route)
   )
 
@@ -141,9 +141,9 @@ export async function middleware(req: NextRequest) {
   }
 
   // Admin route protection
-  if (req.nextUrl.pathname.startsWith('/admin') || 
+  if (req.nextUrl.pathname.startsWith('/admin') ||
       req.nextUrl.pathname.startsWith('/(admin)')) {
-    
+
     if (!user) {
       return NextResponse.redirect(new URL('/login', req.url))
     }

@@ -3,7 +3,7 @@ import { createServerSupabaseClient, getServerUser } from '@/app/lib/supabaseSer
 export async function isAdmin(userId?: string): Promise<boolean> {
   try {
     const supabase = await createServerSupabaseClient()
-    
+
     // If no userId provided, get current user
     let targetUserId = userId
     if (!targetUserId) {
@@ -11,17 +11,17 @@ export async function isAdmin(userId?: string): Promise<boolean> {
       if (!user) return false
       targetUserId = user.id
     }
-    
+
     const { data: profile, error } = await supabase
       .from('profiles')
       .select('role')
       .eq('id', targetUserId)
       .single()
-    
+
     if (error || !profile) {
       return false
     }
-    
+
     return profile.role === 'admin'
   } catch (error) {
     console.error('Error checking admin status:', error)

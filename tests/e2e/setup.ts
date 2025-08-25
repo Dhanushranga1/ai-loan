@@ -25,13 +25,13 @@ export class TestEnvironment {
    */
   async createTestUsers() {
     console.log('Setting up test users...')
-    
+
     // In a real implementation, this would:
     // 1. Connect to test database
     // 2. Create admin user with role 'admin'
     // 3. Create regular user with role 'user'
     // 4. Set up test data for loan applications
-    
+
     const testUsers = [
       {
         email: 'admin@test.com',
@@ -40,16 +40,16 @@ export class TestEnvironment {
         full_name: 'Test Admin'
       },
       {
-        email: 'user@test.com', 
+        email: 'user@test.com',
         password: 'testpassword123',
         role: 'user',
         full_name: 'Test User'
       }
     ]
-    
+
     // Log the test users for manual setup reference
     console.log('Test users to create:', testUsers)
-    
+
     return testUsers
   }
 
@@ -58,7 +58,7 @@ export class TestEnvironment {
    */
   async cleanupTestData() {
     console.log('Cleaning up test data...')
-    
+
     // In a real implementation, this would:
     // 1. Delete test loan applications
     // 2. Delete test users
@@ -70,7 +70,7 @@ export class TestEnvironment {
    */
   async seedTestData() {
     console.log('Seeding test data...')
-    
+
     // In a real implementation, this would:
     // 1. Create sample loan applications with different statuses
     // 2. Create test decisions
@@ -85,10 +85,10 @@ export class TestEnvironment {
       // Check if the application is running
       const page = await this.context?.newPage()
       if (!page) return false
-      
+
       const response = await page.goto('http://localhost:3000', { timeout: 10000 })
       await page.close()
-      
+
       return response?.ok() || false
     } catch (error) {
       console.error('Environment check failed:', error)
@@ -101,17 +101,17 @@ export class TestEnvironment {
    */
   async waitForApplicationReady(maxWaitTime = 60000) {
     const startTime = Date.now()
-    
+
     while (Date.now() - startTime < maxWaitTime) {
       if (await this.isEnvironmentReady()) {
         console.log('Application is ready!')
         return true
       }
-      
+
       console.log('Waiting for application to be ready...')
       await new Promise(resolve => setTimeout(resolve, 2000))
     }
-    
+
     throw new Error('Application did not become ready within timeout')
   }
 }
@@ -123,11 +123,11 @@ export const TEST_CONFIG = {
   ADMIN_PASSWORD: process.env.TEST_ADMIN_PASSWORD || 'testpassword123',
   USER_EMAIL: process.env.TEST_USER_EMAIL || 'user@test.com',
   USER_PASSWORD: process.env.TEST_USER_PASSWORD || 'testpassword123',
-  
+
   // Test timeouts
   DEFAULT_TIMEOUT: 30000,
   SLOW_TIMEOUT: 60000,
-  
+
   // Test data
   SAMPLE_LOAN: {
     amount: 50000,

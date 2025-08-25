@@ -11,7 +11,7 @@ export class TestHelpers {
     await this.page.fill('input[name="email"]', email)
     await this.page.fill('input[name="password"]', password)
     await this.page.click('button[type="submit"]')
-    
+
     // Wait for redirect after login
     await this.page.waitForURL('/')
     await expect(this.page.locator('text=Welcome')).toBeVisible()
@@ -52,16 +52,16 @@ export class TestHelpers {
     creditScore?: number
   }) {
     await this.page.goto('/apply')
-    
+
     // Fill loan details
     await this.page.fill('input[name="amount"]', data.amount.toString())
     await this.page.fill('input[name="tenure_months"]', data.tenure.toString())
     await this.page.fill('input[name="purpose"]', data.purpose)
-    
+
     // Fill personal details
     await this.page.fill('input[name="annual_income"]', data.income.toString())
     await this.page.fill('input[name="employment_type"]', data.employment)
-    
+
     if (data.creditScore) {
       await this.page.fill('input[name="credit_score"]', data.creditScore.toString())
     }
@@ -72,7 +72,7 @@ export class TestHelpers {
    */
   async submitLoanApplication() {
     await this.page.click('button[type="submit"]')
-    
+
     // Wait for success message or redirect
     await expect(
       this.page.locator('text=Application submitted successfully')
@@ -99,9 +99,9 @@ export class TestHelpers {
    * Take screenshot with name
    */
   async takeScreenshot(name: string) {
-    await this.page.screenshot({ 
+    await this.page.screenshot({
       path: `test-results/${name}.png`,
-      fullPage: true 
+      fullPage: true
     })
   }
 
@@ -137,7 +137,7 @@ export class TestHelpers {
    * Wait for API response
    */
   async waitForApiResponse(urlPattern: string) {
-    const responsePromise = this.page.waitForResponse(response => 
+    const responsePromise = this.page.waitForResponse(response =>
       response.url().includes(urlPattern) && response.status() === 200
     )
     return responsePromise

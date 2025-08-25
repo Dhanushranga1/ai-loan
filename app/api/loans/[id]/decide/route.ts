@@ -145,7 +145,7 @@ export async function POST(request: NextRequest, context: { params: DecideParams
   const user = await getUser() // Get user for rate limiting identifier
   const identifier = getRateLimitIdentifier(request, user?.id)
   const rateLimitResult = rateLimit(identifier, RATE_LIMITS.LOAN_DECISION)
-  
+
   if (!rateLimitResult.success) {
     return new Response(
       JSON.stringify({
@@ -166,15 +166,15 @@ export async function POST(request: NextRequest, context: { params: DecideParams
       }
     )
   }
-  
+
   // Call the actual handler
   const response = await decideHandler(request, context)
-  
+
   // Add rate limit headers to successful responses
   response.headers.set('X-RateLimit-Limit', rateLimitResult.limit.toString())
   response.headers.set('X-RateLimit-Remaining', rateLimitResult.remaining.toString())
   response.headers.set('X-RateLimit-Reset', rateLimitResult.resetTime.toString())
-  
+
   return response
 }
 
