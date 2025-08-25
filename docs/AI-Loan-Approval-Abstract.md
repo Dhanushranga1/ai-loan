@@ -9,9 +9,9 @@ Loan desks are overloaded with repetitive applications. Manual triage delays app
 
 ### Objectives
 
-• Build a **full-stack** app (Next.js) with **Supabase Auth + RLS** for per-user data isolation  
-• Implement a **transparent AI scoring** (rule-based + explanations) with guarded thresholds  
-• Provide **loan lifecycle**: create → list → view → decide  
+• Build a **full-stack** app (Next.js) with **Supabase Auth + RLS** for per-user data isolation
+• Implement a **transparent AI scoring** (rule-based + explanations) with guarded thresholds
+• Provide **loan lifecycle**: create → list → view → decide
 • Set up **CI/CD** with **Jenkins + Docker** and **single-VM deploy** (health checks + rollback)
 
 ### Scope
@@ -26,7 +26,7 @@ Loan desks are overloaded with repetitive applications. Manual triage delays app
 
 **Out of Scope (for now):**
 - Heavy ML training and complex neural networks
-- Kubernetes orchestration and multi-environment deployments  
+- Kubernetes orchestration and multi-environment deployments
 - Advanced blue/green deployment strategies
 
 ### Architecture
@@ -54,17 +54,17 @@ A working MVP that **securely processes loans**, **explains decisions transparen
 ### Business Impact
 
 - **Reduced Processing Time:** Automated scoring eliminates manual triage delays
-- **Improved Consistency:** Rule-based decisions ensure fair, auditable outcomes  
+- **Improved Consistency:** Rule-based decisions ensure fair, auditable outcomes
 - **Operational Efficiency:** DevOps automation enables rapid feature delivery
 - **Risk Management:** Comprehensive guardrails and audit trails ensure compliance
 - **Scalability Foundation:** Modern architecture ready for future ML enhancements
 
 ---
 
-**Project Team:** [Student Name]  
-**Institution:** [University Name]  
-**Course:** DevOps Engineering  
-**Phase:** Review-1 Evaluation  
+**Project Team:** [Student Name]
+**Institution:** [University Name]
+**Course:** DevOps Engineering
+**Phase:** Review-1 Evaluation
 **Date:** August 2025
 
 ---

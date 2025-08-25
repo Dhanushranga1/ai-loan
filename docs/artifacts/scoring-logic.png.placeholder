@@ -2,8 +2,8 @@
 
 ## 🖼️ IMAGE PLACEHOLDER - TO BE REPLACED
 
-**Filename**: scoring-logic.png  
-**Size**: 1600x1200 pixels  
+**Filename**: scoring-logic.png
+**Size**: 1600x1200 pixels
 **Format**: PNG with high quality
 
 ## 📋 Content Description
@@ -16,13 +16,13 @@ This image should contain a visual representation of the AI scoring logic showin
 ### Scoring Weights Breakdown
 - **Credit Score (35%)**: 300-850 range, normalization formula
 - **Debt-to-Income (25%)**: 0-100% range, lower is better
-- **Income vs Amount (25%)**: Loan-to-income ratio calculation  
+- **Income vs Amount (25%)**: Loan-to-income ratio calculation
 - **Employment History (10%)**: Years of stability factor
 - **Loan Term (5%)**: Term length impact
 
 ### Guardrails & Hard Rules
 - Credit Score < 500 → Automatic Rejection
-- DTI Ratio > 60% → Automatic Rejection  
+- DTI Ratio > 60% → Automatic Rejection
 - EMI > 40% Income → Automatic Rejection
 - Score Cap at 0.65 → Maximum achievable
 

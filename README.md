@@ -666,7 +666,7 @@ This section contains all deliverables for the DevOps Review-1 evaluation, demon
 ### 🎨 Technical Diagrams
 
 - **[System Architecture](docs/artifacts/architecture-diagram.png)** - Complete system overview with component interactions
-- **[Database ERD](docs/artifacts/db-erd.png)** - Entity relationships with RLS security policies  
+- **[Database ERD](docs/artifacts/db-erd.png)** - Entity relationships with RLS security policies
 - **[CI/CD Pipeline](docs/artifacts/ci-cd-pipeline.png)** - 10-stage Jenkins pipeline visualization
 - **[AI Scoring Logic](docs/artifacts/scoring-logic.png)** - Decision algorithm with weights and thresholds
 
@@ -724,7 +724,7 @@ See [`Jenkinsfile`](Jenkinsfile) for complete pipeline configuration.
 ### 🔐 Security Implementation
 
 - **Row Level Security (RLS)**: Database-level data isolation ensuring users only access their own data
-- **Admin Overrides**: Role-based access for administrative functions  
+- **Admin Overrides**: Role-based access for administrative functions
 - **Audit Logging**: Complete action tracking for compliance and transparency
 - **Secure Deployment**: Environment-based secrets management with no hardcoded credentials
 

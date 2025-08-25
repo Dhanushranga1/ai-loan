@@ -24,7 +24,7 @@ Phase 6 successfully completed all Review-1 deliverables for the AI Loan Approva
 All screenshots documented in [`/docs/screenshots/phase-6/`](screenshots/phase-6/) with detailed capture instructions:
 
 1. **Jenkins Pipeline**: [`01-jenkins-green.png`](screenshots/phase-6/01-jenkins-green.png.placeholder) - Successful build execution
-2. **Docker Registry**: [`02-dockerhub-tags.png`](screenshots/phase-6/02-dockerhub-tags.png.placeholder) - Published container images  
+2. **Docker Registry**: [`02-dockerhub-tags.png`](screenshots/phase-6/02-dockerhub-tags.png.placeholder) - Published container images
 3. **VM Deployment**: [`03-vm-docker-ps.png`](screenshots/phase-6/03-vm-docker-ps.png.placeholder) - Running containers on production VM
 4. **Application Home**: [`04-app-home.png`](screenshots/phase-6/04-app-home.png.placeholder) - Dashboard with authentication
 5. **Loan Management**: [`05-loans-list.png`](screenshots/phase-6/05-loans-list.png.placeholder) - Loan listing with status badges
@@ -136,7 +136,7 @@ All screenshots documented in [`/docs/screenshots/phase-6/`](screenshots/phase-6
 
 ---
 
-**Phase 6 Status**: ✅ **COMPLETE** - All deliverables ready for Review-1  
-**Last Updated**: August 25, 2025  
-**Next Milestone**: Review-1 Evaluation & Viva Presentation  
+**Phase 6 Status**: ✅ **COMPLETE** - All deliverables ready for Review-1
+**Last Updated**: August 25, 2025
+**Next Milestone**: Review-1 Evaluation & Viva Presentation
 **Repository Tag**: [`v0.1-review1`](../../releases/tag/v0.1-review1)

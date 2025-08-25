@@ -3,7 +3,7 @@ graph TB
     subgraph "Input Data"
         LOAN[💰 Loan Application<br/>Amount: $50,000<br/>Term: 60 months<br/>Income: $75,000<br/>Credit: 720<br/>DTI: 0.35<br/>Employment: 3 years]
     end
-    
+
     subgraph "Scoring Weights"
         W1[📊 Credit Score<br/>Weight: 35%<br/>Range: 300-850<br/>Normalized: 0-1]
         W2[💵 Debt-to-Income<br/>Weight: 25%<br/>Range: 0-1<br/>Lower is Better]
@@ -11,51 +11,51 @@ graph TB
         W4[⏱️ Employment History<br/>Weight: 10%<br/>Years of Stability<br/>More is Better]
         W5[📅 Loan Term<br/>Weight: 5%<br/>Term Length Impact<br/>Shorter is Better]
     end
-    
+
     subgraph "Guardrails & Hard Rules"
         G1[🚫 Credit Score < 500<br/>Automatic Rejection<br/>Override: None]
         G2[🚫 DTI Ratio > 60%<br/>Automatic Rejection<br/>High Risk Threshold]
         G3[⚠️ EMI > 40% Income<br/>Automatic Rejection<br/>Payment Capacity]
         G4[📈 Score Cap at 0.65<br/>Maximum Achievable<br/>Conservative Limit]
     end
-    
+
     subgraph "Scoring Calculation"
         CALC[🧮 Weighted Sum<br/>Score = Σ(weight × normalized_value)<br/>Range: 0.0 - 0.65<br/>Example: 0.58]
     end
-    
+
     subgraph "Decision Thresholds"
         T1[✅ Score ≥ 0.70<br/>APPROVED<br/>High Confidence]
         T2[📋 Score ≥ 0.55<br/>UNDER REVIEW<br/>Manual Assessment]
         T3[❌ Score < 0.55<br/>REJECTED<br/>Low Confidence]
     end
-    
+
     subgraph "Explanation Generation"
         REASONS[💭 Reason Generation<br/>3-6 Explanations<br/>Business Language<br/>Positive & Negative Signals]
-        
+
         POSITIVE[➕ Positive Factors<br/>- Excellent credit score<br/>- Stable employment<br/>- Reasonable loan amount]
-        
+
         NEGATIVE[➖ Risk Factors<br/>- High debt-to-income ratio<br/>- Long loan term<br/>- Income concerns]
     end
-    
+
     subgraph "Final Decision"
         DECISION[📋 Decision Output<br/>Status: UNDER_REVIEW<br/>Score: 0.58<br/>Confidence: 0.82<br/>Model: rule_based]
     end
-    
+
     subgraph "Alternative: Logistic Model"
         LOGISTIC[🤖 Logistic Regression<br/>Coefficients: [-2.1, 3.5, -1.8, 0.9, -0.3]<br/>Sigmoid Output: 0-1<br/>Same Guardrails Apply]
     end
-    
+
     %% Flow
     LOAN --> W1
-    LOAN --> W2  
+    LOAN --> W2
     LOAN --> W3
     LOAN --> W4
     LOAN --> W5
-    
+
     W1 --> G1
     W2 --> G2
     W3 --> G3
-    
+
     G1 --> CALC
     G2 --> CALC
     G3 --> CALC
@@ -64,28 +64,28 @@ graph TB
     W3 --> CALC
     W4 --> CALC
     W5 --> CALC
-    
+
     CALC --> G4
     G4 --> T1
     G4 --> T2
     G4 --> T3
-    
+
     T1 --> REASONS
     T2 --> REASONS
     T3 --> REASONS
-    
+
     REASONS --> POSITIVE
     REASONS --> NEGATIVE
-    
+
     POSITIVE --> DECISION
     NEGATIVE --> DECISION
-    
+
     %% Alternative path
     LOAN -.-> LOGISTIC
     LOGISTIC -.-> G1
     LOGISTIC -.-> G2
     LOGISTIC -.-> G3
-    
+
     %% Styling
     classDef inputStyle fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
     classDef weightStyle fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
@@ -95,7 +95,7 @@ graph TB
     classDef reasonStyle fill:#f1f8e9,stroke:#558b2f,stroke-width:2px
     classDef decisionStyle fill:#e0f2f1,stroke:#00695c,stroke-width:2px
     classDef altStyle fill:#fce4ec,stroke:#ad1457,stroke-width:2px
-    
+
     class LOAN inputStyle
     class W1,W2,W3,W4,W5 weightStyle
     class G1,G2,G3,G4 guardrailStyle
@@ -119,7 +119,7 @@ The AI Loan Approval System uses a transparent, rule-based scoring approach with
 - **Impact**: Primary factor in creditworthiness assessment
 - **Example**: Score 720 → Normalized 0.76 → Weighted 0.27
 
-### Debt-to-Income Ratio (25% Weight)  
+### Debt-to-Income Ratio (25% Weight)
 - **Range**: 0.0 - 1.0 (0% - 100%)
 - **Normalization**: 1 - DTI ratio (inverted, lower is better)
 - **Impact**: Payment capacity assessment
@@ -133,7 +133,7 @@ The AI Loan Approval System uses a transparent, rule-based scoring approach with
 
 ### Employment History (10% Weight)
 - **Range**: 0+ years of employment
-- **Normalization**: Min(years/10, 1.0) 
+- **Normalization**: Min(years/10, 1.0)
 - **Impact**: Employment stability indicator
 - **Example**: 3 years → Normalized 0.30 → Weighted 0.03
 
@@ -163,13 +163,13 @@ The AI Loan Approval System uses a transparent, rule-based scoring approach with
 - **Confidence**: High
 - **Processing**: Automatic approval
 
-### Review Criteria (0.55 ≤ Score < 0.70)  
+### Review Criteria (0.55 ≤ Score < 0.70)
 - **Status**: UNDER_REVIEW
 - **Confidence**: Medium
 - **Processing**: Manual underwriter assessment
 
 ### Rejection Criteria (Score < 0.55)
-- **Status**: REJECTED  
+- **Status**: REJECTED
 - **Confidence**: Low
 - **Processing**: Automatic rejection
 

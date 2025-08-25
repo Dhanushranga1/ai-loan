@@ -2,8 +2,8 @@
 
 ## 🖼️ IMAGE PLACEHOLDER - TO BE REPLACED
 
-**Filename**: ci-cd-pipeline.png  
-**Size**: 1600x1200 pixels  
+**Filename**: ci-cd-pipeline.png
+**Size**: 1600x1200 pixels
 **Format**: PNG with high quality
 
 ## 📋 Content Description
@@ -16,7 +16,7 @@ This image should contain a comprehensive CI/CD pipeline visualization showing:
 
 ### Jenkins Pipeline Stages (10 Stages)
 1. **Checkout**: Repository cloning and workspace setup
-2. **Setup**: Node.js environment and package manager detection  
+2. **Setup**: Node.js environment and package manager detection
 3. **Install**: Dependency installation with security audit
 4. **Lint**: ESLint code style validation (parallel)
 5. **Type Check**: TypeScript validation (parallel)

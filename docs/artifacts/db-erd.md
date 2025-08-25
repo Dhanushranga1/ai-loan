@@ -8,7 +8,7 @@ erDiagram
         timestamp created_at
         timestamp updated_at
     }
-    
+
     loans {
         uuid id PK
         uuid user_id FK "references profiles(id)"
@@ -24,7 +24,7 @@ erDiagram
         timestamp created_at
         timestamp updated_at
     }
-    
+
     decisions {
         uuid id PK
         uuid loan_id FK "references loans(id)"
@@ -37,7 +37,7 @@ erDiagram
         timestamp created_at
         timestamp updated_at
     }
-    
+
     audit_logs {
         uuid id PK
         uuid user_id FK "references profiles(id)"
@@ -49,30 +49,30 @@ erDiagram
         text user_agent "browser info"
         timestamp created_at
     }
-    
+
     %% Relationships
     profiles ||--o{ loans : "owns"
     profiles ||--o{ audit_logs : "performs"
     loans ||--o| decisions : "has"
     loans ||--o{ audit_logs : "tracked_in"
     decisions ||--o{ audit_logs : "tracked_in"
-    
+
     %% RLS Policies Indicators
     profiles {
         rls_policy owner_access "users see own profile"
         rls_policy admin_access "admins see all profiles"
     }
-    
+
     loans {
         rls_policy owner_access "users see own loans"
         rls_policy admin_access "admins see all loans"
     }
-    
+
     decisions {
         rls_policy owner_access "users see own decisions"
         rls_policy admin_access "admins see all decisions"
     }
-    
+
     audit_logs {
         rls_policy owner_access "users see own actions"
         rls_policy admin_access "admins see all actions"
@@ -91,14 +91,14 @@ The AI Loan Approval System uses a PostgreSQL database hosted on Supabase with c
 - **Key Features**: Links to Supabase auth.users, supports admin roles
 - **RLS**: Users access own profile, admins access all
 
-### loans  
+### loans
 - **Purpose**: Loan application data and status tracking
 - **Key Features**: Complete borrower information, status workflow
 - **RLS**: Owner-only access with admin override
 - **Relationships**: Belongs to user, has one decision
 
 ### decisions
-- **Purpose**: AI scoring results and explanations  
+- **Purpose**: AI scoring results and explanations
 - **Key Features**: Score, reasons, model tracking, confidence
 - **RLS**: Tied to loan ownership via foreign key
 - **Relationships**: Belongs to loan, tracked in audit logs

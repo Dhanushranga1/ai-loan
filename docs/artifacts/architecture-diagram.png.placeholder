@@ -2,8 +2,8 @@
 
 ## 🖼️ IMAGE PLACEHOLDER - TO BE REPLACED
 
-**Filename**: architecture-diagram.png  
-**Size**: 1600x1200 pixels  
+**Filename**: architecture-diagram.png
+**Size**: 1600x1200 pixels
 **Format**: PNG with high quality
 
 ## 📋 Content Description
@@ -13,7 +13,7 @@ This image should contain a visual representation of the system architecture sho
 - User icon and browser interface
 - Connection to Next.js application
 
-### Application Layer  
+### Application Layer
 - Next.js UI components (Dashboard, Forms, Decision Display)
 - API Routes (/api/loans, /api/health, /api/loans/[id]/decide)
 - AI Scorer Module (Rule-based logic, Logistic model, Guardrails)
