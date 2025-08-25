@@ -6,13 +6,16 @@ The AI Loan Approval System is a modern, full-stack web application that automat
 
 ## 🎯 Features
 
-- **Smart Loan Decisioning**: Rule-based AI scoring with transparent explanations
-- **User Authentication**: Secure auth powered by Supabase
-- **Loan Management**: Create, view, and track loan applications
-- **Admin Dashboard**: Administrative oversight for loan officers
-- **Real-time EMI Calculator**: Live calculation as users input data
-- **Audit Trail**: Complete activity logging for compliance
-- **Modern UI**: Clean, responsive design with Inter font and Tailwind CSS
+- **🤖 AI-Powered Decisions**: Transparent rule-based scoring with explainable AI
+- **📊 Smart Analytics**: Real-time loan scoring with detailed explanations
+- **🔐 Secure Authentication**: Supabase-powered auth with role-based access
+- **📝 Loan Management**: Complete application lifecycle from submission to decision
+- **👨‍💼 Admin Dashboard**: Administrative oversight for loan officers
+- **💰 EMI Calculator**: Real-time payment calculations as users input data
+- **📈 Decision History**: Complete audit trail for compliance and transparency
+- **🎨 Modern UI**: Clean, responsive design with shadcn/ui components
+- **⚡ Real-time Updates**: Live decision processing with instant feedback
+- **🔍 Transparent Scoring**: See exactly how decisions are made
 
 ## 🛠 Tech Stack
 
@@ -26,9 +29,12 @@ The AI Loan Approval System is a modern, full-stack web application that automat
 - **Row Level Security (RLS)** for data protection
 
 ### AI & Scoring
-- **Rule-based Decision Engine** with transparent weights
-- **Optional Logistic Regression** model
-- **Explanatory AI** - provides clear reasoning for decisions
+- **🧠 Rule-based Scoring Engine** - Transparent weights and thresholds
+- **📋 Explainable AI** - 3-6 concrete reasons for every decision  
+- **🔄 Idempotency System** - Consistent decisions for identical inputs
+- **⚖️ Configurable Thresholds** - Customizable approve/review/reject limits
+- **📊 Feature Engineering** - EMI calculation, DTI analysis, risk assessment
+- **🔍 Decision Audit Trail** - Complete history for compliance
 
 ### DevOps & Infrastructure
 - **Docker** containerization
@@ -134,9 +140,60 @@ Create a `.env.local` file with:
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-AI_MODEL=rules
+
+# AI Configuration
+AI_MODEL=rule_based
+DECISION_THRESHOLDS_JSON='{"approve":0.70,"review":0.55}'
+DECISION_MIN_DECISION_INTERVAL_SEC=60
+
+# Environment
 NODE_ENV=development
 PORT=3000
+```
+
+## 🤖 AI Scoring System
+
+### Decision Engine
+The system uses a transparent rule-based scoring engine that evaluates loan applications based on weighted criteria:
+
+| Factor | Weight | Description |
+|--------|---------|-------------|
+| **Credit Score** | 35% | Primary creditworthiness indicator |
+| **Debt-to-Income** | 25% | Existing debt burden assessment |
+| **EMI Ratio** | 25% | Payment affordability check |
+| **Employment Years** | 10% | Income stability factor |
+| **Amount vs Income** | 5% | Loan size appropriateness |
+
+### Decision Thresholds
+- **Approve**: Score ≥ 70% (automatic approval)
+- **Review**: Score ≥ 55% (manual review required)  
+- **Reject**: Score < 55% (automatic rejection)
+
+### Guardrails
+- Credit score below 500: Automatic rejection
+- DTI ratio above 60%: Automatic rejection
+- EMI ratio above 40%: Score capped at 65%
+
+### Explainable AI
+Every decision includes 3-6 concrete reasons such as:
+- "Strong credit score of 750 indicates good creditworthiness"
+- "Low debt-to-income ratio of 20% shows good financial health"
+- "Stable employment of 5 years reduces default risk"
+
+### API Usage
+```bash
+# Generate AI decision for a loan
+POST /api/loans/{id}/decide
+Authorization: Bearer {token}
+
+# Response
+{
+  "decision": "approve",
+  "score": 0.85,
+  "reasons": ["Strong credit score...", "Low DTI ratio..."],
+  "cached": false,
+  "timestamp": "2024-01-15T10:00:00Z"
+}
 ```
 
 ## 🧪 Testing
