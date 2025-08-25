@@ -20,7 +20,7 @@ describe('DecisionCard', () => {
 
   it('renders approval decision correctly', () => {
     render(
-      <DecisionCard 
+      <DecisionCard
         decision={mockDecision}
         loanStatus="approved"
       />
@@ -42,7 +42,7 @@ describe('DecisionCard', () => {
     }
 
     render(
-      <DecisionCard 
+      <DecisionCard
         decision={rejectDecision}
         loanStatus="rejected"
       />
@@ -62,7 +62,7 @@ describe('DecisionCard', () => {
     }
 
     render(
-      <DecisionCard 
+      <DecisionCard
         decision={reviewDecision}
         loanStatus="under_review"
       />
@@ -75,7 +75,7 @@ describe('DecisionCard', () => {
 
   it('formats timestamp correctly', () => {
     render(
-      <DecisionCard 
+      <DecisionCard
         decision={mockDecision}
         loanStatus="approved"
       />
@@ -92,7 +92,7 @@ describe('DecisionCard', () => {
     }
 
     render(
-      <DecisionCard 
+      <DecisionCard
         decision={decisionWithoutReasons}
         loanStatus="approved"
       />
@@ -105,7 +105,7 @@ describe('DecisionCard', () => {
 
   it('applies correct styling for different decision types', () => {
     const { rerender } = render(
-      <DecisionCard 
+      <DecisionCard
         decision={mockDecision}
         loanStatus="approved"
       />
@@ -118,7 +118,7 @@ describe('DecisionCard', () => {
     // Test reject styling
     const rejectDecision = { ...mockDecision, decision: 'reject' as const }
     rerender(
-      <DecisionCard 
+      <DecisionCard
         decision={rejectDecision}
         loanStatus="rejected"
       />
@@ -130,7 +130,7 @@ describe('DecisionCard', () => {
     // Test review styling
     const reviewDecision = { ...mockDecision, decision: 'needs_review' as const }
     rerender(
-      <DecisionCard 
+      <DecisionCard
         decision={reviewDecision}
         loanStatus="under_review"
       />

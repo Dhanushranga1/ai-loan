@@ -22,11 +22,11 @@ interface DecisionResponse {
   cached?: boolean
 }
 
-export function RunDecisionButton({ 
-  loanId, 
-  currentStatus, 
-  onDecisionMade, 
-  disabled 
+export function RunDecisionButton({
+  loanId,
+  currentStatus,
+  onDecisionMade,
+  disabled
 }: RunDecisionButtonProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -91,17 +91,17 @@ export function RunDecisionButton({
         )}
         {getButtonText()}
       </Button>
-      
+
       {error && (
         <div className="text-sm text-red-600 bg-red-50 p-2 rounded border border-red-200">
           {error}
         </div>
       )}
-      
+
       {!canRunDecision && currentStatus !== 'draft' && (
         <p className="text-xs text-gray-500 text-center">
-          {currentStatus === 'approved' || currentStatus === 'rejected' 
-            ? 'This loan already has a final decision' 
+          {currentStatus === 'approved' || currentStatus === 'rejected'
+            ? 'This loan already has a final decision'
             : 'Decision cannot be run for this status'}
         </p>
       )}

@@ -31,7 +31,7 @@ function sigmoid(z: number): number {
 function normalizeFeatures(features: LoanFeatures): ScoringResult['features'] {
   const emi = calculateEMI(features.amount, features.tenure_months)
   const dti_ratio = features.existing_debts / Math.max(features.monthly_income, 1)
-  
+
   return {
     credit_score_normalized: Math.max(0, Math.min(1, (features.credit_score - 300) / 600)),
     dti_ratio,
@@ -47,7 +47,7 @@ function normalizeFeatures(features: LoanFeatures): ScoringResult['features'] {
  */
 function calculateEMI(amount: number, tenure: number, rate: number = 0.12): number {
   const monthlyRate = rate / 12
-  const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / 
+  const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) /
               (Math.pow(1 + monthlyRate, tenure) - 1)
   return emi
 }
@@ -58,7 +58,7 @@ function calculateEMI(amount: number, tenure: number, rate: number = 0.12): numb
 export function scoreLogistic(features: LoanFeatures): ScoringResult {
   // Normalize features
   const normalizedFeatures = normalizeFeatures(features)
-  
+
   // Calculate logistic score
   const z = LOGISTIC_COEFFICIENTS.intercept +
             LOGISTIC_COEFFICIENTS.credit_score_normalized * normalizedFeatures.credit_score_normalized +
@@ -66,35 +66,35 @@ export function scoreLogistic(features: LoanFeatures): ScoringResult {
             LOGISTIC_COEFFICIENTS.emi_to_income * normalizedFeatures.emi_to_income +
             LOGISTIC_COEFFICIENTS.employment_length_normalized * normalizedFeatures.employment_length_normalized +
             LOGISTIC_COEFFICIENTS.amount_vs_income * normalizedFeatures.amount_vs_income
-  
+
   // Apply sigmoid to get probability score
   let score = sigmoid(z)
-  
+
   // Apply same guardrails as rule-based model
   const guardrailReasons: string[] = []
-  
+
   // Credit score floor
   if (features.credit_score < 500) {
     score = 0
     guardrailReasons.push(`Low credit score (${features.credit_score}) below minimum requirement`)
   }
-  
+
   // DTI ceiling
   if (normalizedFeatures.dti_ratio > 0.60) {
     score = 0
     guardrailReasons.push(`High debt-to-income ratio (${(normalizedFeatures.dti_ratio * 100).toFixed(1)}%) exceeds maximum limit`)
   }
-  
+
   // EMI to income ceiling (cap score)
   const emiRatio = 1 - normalizedFeatures.emi_to_income
   if (emiRatio > 0.40) {
     score = Math.min(score, 0.65)
     guardrailReasons.push(`High EMI-to-income ratio (${(emiRatio * 100).toFixed(1)}%) requires review`)
   }
-  
+
   // Determine decision
   const decision = getDecisionFromScore(score)
-  
+
   // Generate explanations
   const reasons = generateExplanations({
     features,
@@ -103,7 +103,7 @@ export function scoreLogistic(features: LoanFeatures): ScoringResult {
     decision,
     guardrailReasons,
   })
-  
+
   return {
     score,
     decision,

@@ -48,7 +48,7 @@ export const GUARDRAIL_LIMITS: GuardrailLimits = {
  */
 export function getDecisionThresholds(): DecisionThresholds {
   const envThresholds = process.env.DECISION_THRESHOLDS_JSON
-  
+
   if (envThresholds) {
     try {
       const parsed = JSON.parse(envThresholds)
@@ -60,7 +60,7 @@ export function getDecisionThresholds(): DecisionThresholds {
       console.warn('Invalid DECISION_THRESHOLDS_JSON, using defaults:', error)
     }
   }
-  
+
   return DEFAULT_THRESHOLDS
 }
 
@@ -76,7 +76,7 @@ export function getMinDecisionInterval(): number {
  */
 export function getDecisionFromScore(score: number): 'approve' | 'needs_review' | 'reject' {
   const thresholds = getDecisionThresholds()
-  
+
   if (score >= thresholds.approve) {
     return 'approve'
   } else if (score >= thresholds.review) {

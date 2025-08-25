@@ -35,23 +35,23 @@ export function extractFeatures(data: LoanApplicationData): ExtractedFeatures {
   if (!data.amount || data.amount <= 0) {
     throw new Error('Invalid loan amount')
   }
-  
+
   if (!data.tenure_months || data.tenure_months <= 0) {
     throw new Error('Invalid loan tenure')
   }
-  
+
   if (!data.monthly_income || data.monthly_income <= 0) {
     throw new Error('Invalid monthly income')
   }
-  
+
   if (data.existing_debts < 0) {
     throw new Error('Invalid existing debts')
   }
-  
+
   if (!data.credit_score || data.credit_score < 300 || data.credit_score > 900) {
     throw new Error('Invalid credit score (must be 300-900)')
   }
-  
+
   if (data.employment_years < 0) {
     throw new Error('Invalid employment years')
   }
@@ -91,7 +91,7 @@ export function generateInputHash(features: ExtractedFeatures): string {
 
   // Create a simple hash (for Phase 4, we'll use a simple approach)
   const jsonString = JSON.stringify(hashInput, Object.keys(hashInput).sort())
-  
+
   // Simple hash function (in production, use crypto.createHash)
   let hash = 0
   for (let i = 0; i < jsonString.length; i++) {
@@ -99,7 +99,7 @@ export function generateInputHash(features: ExtractedFeatures): string {
     hash = ((hash << 5) - hash) + char
     hash = hash & hash // Convert to 32-bit integer
   }
-  
+
   return hash.toString(36) // Base36 for shorter string
 }
 
@@ -109,7 +109,7 @@ export function generateInputHash(features: ExtractedFeatures): string {
 export function validateFeaturesForScoring(features: ExtractedFeatures): void {
   const requiredFields: (keyof ExtractedFeatures)[] = [
     'credit_score',
-    'monthly_income', 
+    'monthly_income',
     'existing_debts',
     'amount',
     'tenure_months',

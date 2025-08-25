@@ -44,7 +44,7 @@ interface Decision {
 
 async function getLoanApplication(id: string, userId: string): Promise<LoanApplication | null> {
   const supabase = await createServerSupabaseClient()
-  
+
   const { data: loan, error } = await supabase
     .from('loan_applications')
     .select('*')
@@ -74,7 +74,7 @@ async function getLoanApplication(id: string, userId: string): Promise<LoanAppli
 
 async function getLatestDecision(loanId: string): Promise<Decision | null> {
   const supabase = await createServerSupabaseClient()
-  
+
   const { data: decision, error } = await supabase
     .from('decisions')
     .select('*')
@@ -134,7 +134,7 @@ function formatDate(dateString: string): string {
 async function LoanDetailContent({ params }: { params: { id: string } }) {
   const user = await requireUser()
   const loan = await getLoanApplication(params.id, user.id)
-  
+
   if (!loan) {
     notFound()
   }
@@ -269,7 +269,7 @@ async function LoanDetailContent({ params }: { params: { id: string } }) {
         {/* AI Decision Section */}
         <div className="space-y-4">
           {decision ? (
-            <DecisionCard 
+            <DecisionCard
               decision={{
                 decision: decision.decision,
                 score: decision.score,
@@ -290,7 +290,7 @@ async function LoanDetailContent({ params }: { params: { id: string } }) {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <RunDecisionButton 
+                <RunDecisionButton
                   loanId={loan.id}
                   canDecide={loan.status === 'submitted' || loan.status === 'under_review'}
                 />

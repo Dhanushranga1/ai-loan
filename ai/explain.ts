@@ -115,7 +115,7 @@ export function generateExplanations(context: ExplanationContext): string[] {
  */
 function calculateEMI(amount: number, tenure: number, rate: number = 0.12): number {
   const monthlyRate = rate / 12
-  const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / 
+  const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) /
               (Math.pow(1 + monthlyRate, tenure) - 1)
   return emi
 }

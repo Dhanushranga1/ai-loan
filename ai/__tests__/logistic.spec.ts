@@ -17,7 +17,7 @@ describe('Logistic Scoring', () => {
 
   test('should return score between 0 and 1', () => {
     const result = scoreLogistic(baseFeatures)
-    
+
     expect(result.score).toBeGreaterThanOrEqual(0)
     expect(result.score).toBeLessThanOrEqual(1)
   })
@@ -29,7 +29,7 @@ describe('Logistic Scoring', () => {
     }
 
     const result = scoreLogistic(features)
-    
+
     expect(result.decision).toBe('reject')
     expect(result.score).toBe(0)
   })
@@ -37,7 +37,7 @@ describe('Logistic Scoring', () => {
   test('should be deterministic for same input', () => {
     const result1 = scoreLogistic(baseFeatures)
     const result2 = scoreLogistic(baseFeatures)
-    
+
     expect(result1.score).toBe(result2.score)
     expect(result1.decision).toBe(result2.decision)
   })

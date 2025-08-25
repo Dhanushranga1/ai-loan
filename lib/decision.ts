@@ -78,7 +78,7 @@ export async function canMakeDecision(loanId: string, userId: string): Promise<{
  * Check for recent identical decisions (idempotency)
  */
 export async function getRecentDecision(
-  loanId: string, 
+  loanId: string,
   inputHash: string
 ): Promise<DecisionRecord | null> {
   const supabase = await createServerSupabaseClient()
@@ -164,7 +164,7 @@ export async function persistDecision(
   // Update loan status
   const { error: loanError } = await supabase
     .from('loan_applications')
-    .update({ 
+    .update({
       status: newStatus,
       updated_at: new Date().toISOString()
     })

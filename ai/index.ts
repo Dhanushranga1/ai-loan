@@ -11,7 +11,7 @@ import { extractFeatures, LoanApplicationData } from '../lib/features'
 export function scoreApplication(data: LoanApplicationData) {
   // Extract and validate features
   const extractedFeatures = extractFeatures(data)
-  
+
   // Convert to scoring format
   const loanFeatures: LoanFeatures = {
     credit_score: extractedFeatures.credit_score,
@@ -22,10 +22,10 @@ export function scoreApplication(data: LoanApplicationData) {
     employment_years: extractedFeatures.employment_years,
     purpose: extractedFeatures.purpose,
   }
-  
+
   // Choose model based on environment
   const model = process.env.AI_MODEL || 'rules'
-  
+
   switch (model) {
     case 'logistic':
       return scoreLogistic(loanFeatures)

@@ -4,11 +4,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getUser } from '@/app/lib/auth'
 import { scoreApplication } from '@/ai'
-import { 
-  canMakeDecision, 
-  getRecentDecision, 
-  loanToApplicationData, 
-  persistDecision 
+import {
+  canMakeDecision,
+  getRecentDecision,
+  loanToApplicationData,
+  persistDecision
 } from '@/lib/decision'
 import { generateInputHash, extractFeatures } from '@/lib/features'
 import { insertAuditLog } from '@/app/lib/audit'
@@ -35,9 +35,9 @@ export async function POST(
 
     // Check if user can make decision on this loan
     const { canDecide, reason, loan } = await canMakeDecision(loanId, user.id)
-    
+
     if (!canDecide) {
-      const status = reason === 'Loan not found' ? 404 : 
+      const status = reason === 'Loan not found' ? 404 :
                     reason === 'Access denied' ? 403 : 409
       return NextResponse.json({ error: reason }, { status })
     }

@@ -130,7 +130,7 @@ create policy "Owners and admins can create decisions" on decisions
     exists (
       select 1 from loan_applications la
       left join profiles p on p.id = auth.uid()
-      where la.id = loan_id 
+      where la.id = loan_id
       and (la.user_id = auth.uid() or p.role = 'admin')
     )
   );

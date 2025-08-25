@@ -79,16 +79,16 @@ export function DecisionCard({ decision, score, reasons, timestamp, cached }: De
               ))}
             </div>
           </div>
-          
+
           {decision === 'needs_review' && (
             <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
               <p className="text-sm text-yellow-800">
-                <strong>Manual Review Required:</strong> This application requires human evaluation 
+                <strong>Manual Review Required:</strong> This application requires human evaluation
                 due to mixed risk factors. Please review the details carefully.
               </p>
             </div>
           )}
-          
+
           {decision === 'approve' && (
             <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
               <p className="text-sm text-green-800">
@@ -96,7 +96,7 @@ export function DecisionCard({ decision, score, reasons, timestamp, cached }: De
               </p>
             </div>
           )}
-          
+
           {decision === 'reject' && (
             <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-md">
               <p className="text-sm text-red-800">

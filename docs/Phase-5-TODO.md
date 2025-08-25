@@ -11,7 +11,7 @@
 - [ ] Add Jenkinsfile (stages: checkout→test→build→docker→push→deploy)
 - [ ] Add /infra/deploy.sh and /infra/rollback.sh
 - [ ] Add /infra/healthcheck.sh and /infra/README.md
-- [ ] Add /app/api/health/route.ts
+- [x] Add /app/api/health/route.ts
 
 ## CI/CD
 - [ ] First pipeline run on PR (CI only)

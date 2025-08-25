@@ -22,7 +22,7 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.decision).toBe('approve')
     expect(result.score).toBeGreaterThanOrEqual(0.70)
     expect(result.reasons).toContain(expect.stringMatching(/strong credit score/i))
@@ -35,7 +35,7 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.decision).toBe('reject')
     expect(result.score).toBe(0)
     expect(result.reasons).toContain(expect.stringMatching(/low credit score.*below minimum/i))
@@ -48,7 +48,7 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.decision).toBe('reject')
     expect(result.score).toBe(0)
     expect(result.reasons).toContain(expect.stringMatching(/high debt-to-income ratio/i))
@@ -62,7 +62,7 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.score).toBeLessThanOrEqual(0.65)
     expect(result.decision).toBe('needs_review')
     expect(result.reasons).toContain(expect.stringMatching(/high EMI-to-income ratio/i))
@@ -77,7 +77,7 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.decision).toBe('needs_review')
     expect(result.score).toBeGreaterThanOrEqual(0.55)
     expect(result.score).toBeLessThan(0.70)
@@ -92,11 +92,11 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.decision).toBe('approve')
     expect(result.reasons.length).toBeGreaterThanOrEqual(3)
     expect(result.reasons.length).toBeLessThanOrEqual(6)
-    
+
     // Should have positive signals
     const reasonText = result.reasons.join(' ').toLowerCase()
     expect(reasonText).toMatch(/strong|good|excellent|healthy|stable/)
@@ -111,11 +111,11 @@ describe('Rule-based Scoring', () => {
     }
 
     const result = scoreRuleBased(features)
-    
+
     expect(result.decision).toBe('reject')
     expect(result.reasons.length).toBeGreaterThanOrEqual(3)
     expect(result.reasons.length).toBeLessThanOrEqual(6)
-    
+
     // Should have negative signals
     const reasonText = result.reasons.join(' ').toLowerCase()
     expect(reasonText).toMatch(/low|high|limited|exceeds/)
@@ -126,7 +126,7 @@ describe('Rule-based Scoring', () => {
 
     const result1 = scoreRuleBased(features)
     const result2 = scoreRuleBased(features)
-    
+
     expect(result1.score).toBe(result2.score)
     expect(result1.decision).toBe(result2.decision)
     expect(result1.reasons).toEqual(result2.reasons)

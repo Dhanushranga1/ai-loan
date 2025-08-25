@@ -30,7 +30,7 @@ The AI Loan Approval System is a modern, full-stack web application that automat
 
 ### AI & Scoring
 - **🧠 Rule-based Scoring Engine** - Transparent weights and thresholds
-- **📋 Explainable AI** - 3-6 concrete reasons for every decision  
+- **📋 Explainable AI** - 3-6 concrete reasons for every decision
 - **🔄 Idempotency System** - Consistent decisions for identical inputs
 - **⚖️ Configurable Thresholds** - Customizable approve/review/reject limits
 - **📊 Feature Engineering** - EMI calculation, DTI analysis, risk assessment
@@ -166,7 +166,7 @@ The system uses a transparent rule-based scoring engine that evaluates loan appl
 
 ### Decision Thresholds
 - **Approve**: Score ≥ 70% (automatic approval)
-- **Review**: Score ≥ 55% (manual review required)  
+- **Review**: Score ≥ 55% (manual review required)
 - **Reject**: Score < 55% (automatic rejection)
 
 ### Guardrails
