@@ -80,20 +80,20 @@ if command -v docker &> /dev/null; then
     print_info "Building Docker image..."
     docker build -t ai-loan-approval:local-test .
     print_success "Docker image built successfully"
-    
+
     print_info "Testing container..."
     docker run -d --name test-app -p 3000:3000 ai-loan-approval:local-test
-    
+
     # Wait for container to start
     sleep 5
-    
+
     # Test health endpoint
     if curl -f http://localhost:3000/api/health > /dev/null 2>&1; then
         print_success "Health endpoint responding"
     else
         echo -e "${RED}❌ Health endpoint not responding${NC}"
     fi
-    
+
     # Cleanup
     docker rm -f test-app
     docker rmi ai-loan-approval:local-test
@@ -107,7 +107,7 @@ echo -e "\n${GREEN}🎉 Local CI Pipeline Simulation Completed Successfully!${NC
 echo "================================================"
 echo "All stages passed:"
 echo "✅ Environment Setup"
-echo "✅ Dependencies Installation" 
+echo "✅ Dependencies Installation"
 echo "✅ Code Linting"
 echo "✅ Type Checking"
 echo "✅ Unit Testing"
