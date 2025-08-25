@@ -1,7 +1,7 @@
 # Phase 5 TODO
 
 ## Prep
-- [ ] Create Jenkins credentials: dockerhub-creds, vm-ssh-key
+- [x] **Task 6**: Document Jenkins credentials setup and VM configuration procedures
 - [ ] Configure GitHub webhook → Jenkins (or Poll SCM)
 - [ ] Provision VM with Docker Engine
 - [ ] Create /etc/ai-loan-approval.env on VM (runtime env)
