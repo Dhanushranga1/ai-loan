@@ -1,0 +1,33 @@
+{
+  "name": "ai-loan-approval",
+  "version": "1.0.0",
+  "description": "AI-powered loan approval system with transparent decision making",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:e2e": "playwright test",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "loan-approval",
+    "ai",
+    "fintech",
+    "nextjs",
+    "supabase",
+    "devops",
+    "jenkins",
+    "docker"
+  ],
+  "author": "DevOps Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
