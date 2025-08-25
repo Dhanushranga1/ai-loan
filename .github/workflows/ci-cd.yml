@@ -11,6 +11,7 @@ env:
   NODE_VERSION: '20'
   REGISTRY: ghcr.io
   IMAGE_NAME: ai-loan-approval
+  NEXT_TELEMETRY_DISABLED: 1
 
 jobs:
   # 🔍 Code Quality & Testing
@@ -31,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: 🔍 Lint Code
-        run: npm run lint
+        run: npm run lint:demo
 
       - name: 📋 Type Check
         run: npm run type-check
@@ -59,8 +60,6 @@ jobs:
 
       - name: 🏗️ Build Application
         run: npm run build
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
 
       - name: 📤 Upload Build Artifacts
         uses: actions/upload-artifact@v4

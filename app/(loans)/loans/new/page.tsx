@@ -19,7 +19,7 @@ export default function NewLoanPage() {
               <CardHeader>
                 <CardTitle>Loan Details</CardTitle>
                 <CardDescription>
-                  Provide information about the loan you're requesting
+                  Provide information about the loan you&apos;re requesting
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">

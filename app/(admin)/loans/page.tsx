@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import Link from 'next/link'
 import { requireAdmin } from '@/lib/admin'
 import { createServerSupabaseClient } from '@/app/lib/supabaseServer'
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card'
@@ -143,7 +144,7 @@ async function AdminLoansList({ searchParams }: AdminLoansListProps) {
 
               {(searchParams.status || searchParams.search) && (
                 <Button asChild variant="ghost">
-                  <a href="/loans">Clear Filters</a>
+                  <Link href="/loans">Clear Filters</Link>
                 </Button>
               )}
             </form>
