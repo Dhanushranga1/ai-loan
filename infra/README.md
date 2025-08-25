@@ -95,7 +95,7 @@ sudo tee /etc/ai-loan-approval.env > /dev/null <<EOF
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
-# AI Configuration  
+# AI Configuration
 AI_MODEL=rule_based
 DECISION_THRESHOLDS_JSON={"approve":0.70,"review":0.55}
 DECISION_MIN_DECISION_INTERVAL_SEC=60

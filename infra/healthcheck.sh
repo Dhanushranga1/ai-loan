@@ -19,17 +19,17 @@ log "Starting health check for $HEALTH_URL"
 # Attempt health check with retries
 for attempt in $(seq 1 $MAX_ATTEMPTS); do
     log "Health check attempt $attempt/$MAX_ATTEMPTS"
-    
+
     if curl -fsS --max-time 5 "$HEALTH_URL" >/dev/null 2>&1; then
         log "Health check passed! Service is responding"
-        
+
         # Get and display health response
         response=$(curl -sS "$HEALTH_URL" 2>/dev/null || echo '{"error":"failed to get response"}')
         log "Health response: $response"
-        
+
         exit 0
     fi
-    
+
     if [ $attempt -lt $MAX_ATTEMPTS ]; then
         log "Health check failed, waiting ${SLEEP_INTERVAL}s before retry..."
         sleep $SLEEP_INTERVAL

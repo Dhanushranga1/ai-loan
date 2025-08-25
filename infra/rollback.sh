@@ -58,10 +58,10 @@ sleep 5
 log "Running health check on rolled back container"
 if /opt/ai-loan-approval/healthcheck.sh; then
     log "Rollback successful! Previous version is healthy and responding"
-    
+
     # Show container status
     docker ps --filter "name=$CONTAINER_NAME" --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
-    
+
     exit 0
 else
     log "ERROR: Rollback failed! Previous version is also unhealthy"

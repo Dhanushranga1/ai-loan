@@ -3,12 +3,12 @@
 
 export async function GET() {
   return new Response(
-    JSON.stringify({ 
+    JSON.stringify({
       ok: true,
       timestamp: new Date().toISOString(),
       service: 'ai-loan-approval',
       version: process.env.npm_package_version || 'unknown'
-    }), 
+    }),
     {
       headers: { 'content-type': 'application/json' },
       status: 200

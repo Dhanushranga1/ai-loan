@@ -55,20 +55,20 @@ if /opt/ai-loan-approval/healthcheck.sh; then
     # Record successful deployment
     echo "$IMAGE" > "$DATA_DIR/last_successful"
     log "Deployment successful! Container is healthy and responding"
-    
+
     # Show container status
     docker ps --filter "name=$CONTAINER_NAME" --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
-    
+
     exit 0
 else
     log "Health check failed! Rolling back to previous version"
-    
+
     # Attempt rollback
     if /opt/ai-loan-approval/rollback.sh; then
         log "Rollback completed successfully"
     else
         log "Rollback failed! Manual intervention required"
     fi
-    
+
     exit 1
 fi

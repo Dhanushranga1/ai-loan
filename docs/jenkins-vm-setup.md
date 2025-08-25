@@ -379,7 +379,7 @@ sudo systemctl restart docker
 ### Jenkins Pipeline Issues
 
 **Problem**: Pipeline fails with "permission denied" on Docker commands
-**Solution**: 
+**Solution**:
 ```bash
 # Add Jenkins user to docker group
 sudo usermod -aG docker jenkins
