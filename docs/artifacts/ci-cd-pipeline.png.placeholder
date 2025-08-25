@@ -1,0 +1,55 @@
+# CI/CD Pipeline Placeholder
+
+## 🖼️ IMAGE PLACEHOLDER - TO BE REPLACED
+
+**Filename**: ci-cd-pipeline.png  
+**Size**: 1600x1200 pixels  
+**Format**: PNG with high quality
+
+## 📋 Content Description
+This image should contain a comprehensive CI/CD pipeline visualization showing:
+
+### Source Control Section
+- Git Repository icon with branch indicators
+- Webhook trigger mechanism
+- Pull request workflow
+
+### Jenkins Pipeline Stages (10 Stages)
+1. **Checkout**: Repository cloning and workspace setup
+2. **Setup**: Node.js environment and package manager detection  
+3. **Install**: Dependency installation with security audit
+4. **Lint**: ESLint code style validation (parallel)
+5. **Type Check**: TypeScript validation (parallel)
+6. **Test**: Unit/integration testing with coverage (parallel)
+7. **Build**: Next.js production build
+8. **Docker Build**: Multi-stage containerization
+9. **Docker Push**: Registry upload with tagging
+10. **Deploy**: SSH deployment to VM with health checks
+
+### Deployment Infrastructure
+- Production VM with Docker runtime
+- Application container with health endpoints
+- Monitoring and alerting systems
+
+### Artifacts & Storage
+- Docker Registry with tagged images
+- Build logs and test results
+- Deployment artifacts
+
+### Error Handling & Recovery
+- Rollback mechanisms
+- Health check validations
+- Alert notifications
+
+## 🎨 Visual Guidelines
+- Left-to-right flow showing progression
+- Color-coded stages (source→build→test→deploy)
+- Parallel execution indicators
+- Success/failure path distinctions
+- Clear stage boundaries and dependencies
+
+## 📝 Generation Notes
+- Source: `/docs/artifacts/ci-cd-pipeline.md` (Mermaid syntax)
+- Tool: Mermaid to PNG, Jenkins Blue Ocean style
+- Alternative: Draw.io with Jenkins pipeline template
+- Include timing and success rate indicators

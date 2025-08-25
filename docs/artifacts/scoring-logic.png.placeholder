@@ -1,0 +1,60 @@
+# Scoring Logic Placeholder
+
+## 🖼️ IMAGE PLACEHOLDER - TO BE REPLACED
+
+**Filename**: scoring-logic.png  
+**Size**: 1600x1200 pixels  
+**Format**: PNG with high quality
+
+## 📋 Content Description
+This image should contain a visual representation of the AI scoring logic showing:
+
+### Input Data Section
+- Loan application form with sample values
+- Borrower information fields
+
+### Scoring Weights Breakdown
+- **Credit Score (35%)**: 300-850 range, normalization formula
+- **Debt-to-Income (25%)**: 0-100% range, lower is better
+- **Income vs Amount (25%)**: Loan-to-income ratio calculation  
+- **Employment History (10%)**: Years of stability factor
+- **Loan Term (5%)**: Term length impact
+
+### Guardrails & Hard Rules
+- Credit Score < 500 → Automatic Rejection
+- DTI Ratio > 60% → Automatic Rejection  
+- EMI > 40% Income → Automatic Rejection
+- Score Cap at 0.65 → Maximum achievable
+
+### Calculation Flow
+- Weighted sum formula visualization
+- Score computation example
+- Range: 0.0 - 0.65
+
+### Decision Thresholds
+- **≥0.70**: APPROVED (High Confidence)
+- **≥0.55**: UNDER_REVIEW (Manual Assessment)
+- **<0.55**: REJECTED (Low Confidence)
+
+### Explanation Generation
+- 3-6 reason examples
+- Positive and negative factor examples
+- Business-friendly language samples
+
+### Alternative Model
+- Logistic regression coefficients
+- Sigmoid function visualization
+- Model toggle mechanism
+
+## 🎨 Visual Guidelines
+- Flow chart style with clear decision points
+- Color coding for different score ranges (green/yellow/red)
+- Mathematical formulas clearly displayed
+- Example calculations with real numbers
+- Clean, professional business presentation style
+
+## 📝 Generation Notes
+- Source: `/docs/artifacts/scoring-logic.md` (Mermaid syntax)
+- Tool: Mermaid to PNG, or business process diagram tools
+- Alternative: Lucidchart, Visio for decision flow diagrams
+- Include mathematical notation and example calculations

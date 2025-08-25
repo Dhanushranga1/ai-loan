@@ -1,0 +1,53 @@
+# Database ERD Placeholder
+
+## 🖼️ IMAGE PLACEHOLDER - TO BE REPLACED
+
+**Filename**: db-erd.png  
+**Size**: 1600x1200 pixels  
+**Format**: PNG with high quality
+
+## 📋 Content Description
+This image should contain an Entity Relationship Diagram showing:
+
+### Tables & Entities
+
+#### profiles
+- **Fields**: id (PK, UUID), email, full_name, role, created_at, updated_at
+- **RLS**: owner_access, admin_access policies
+- **Relationships**: One-to-many with loans and audit_logs
+
+#### loans  
+- **Fields**: id (PK), user_id (FK), status, amount, term_months, annual_income, credit_score, debt_to_income_ratio, employment_years, purpose, input_hash, timestamps
+- **RLS**: owner_access, admin_access policies
+- **Relationships**: Belongs to profiles, has one decision, tracked in audit_logs
+
+#### decisions
+- **Fields**: id (PK), loan_id (FK), status, score, reasons (JSON), model_used, input_hash, confidence, timestamps
+- **RLS**: owner_access, admin_access policies  
+- **Relationships**: Belongs to loans, tracked in audit_logs
+
+#### audit_logs
+- **Fields**: id (PK), user_id (FK), loan_id (FK), decision_id (FK), action, metadata (JSON), ip_address, user_agent, created_at
+- **RLS**: owner_access, admin_access policies
+- **Relationships**: Links to all other entities
+
+### Visual Elements
+- Entity boxes with field names and types
+- Primary keys highlighted (gold/yellow)
+- Foreign keys marked (blue/purple)
+- Relationship lines with cardinality (1:1, 1:many)
+- RLS policy indicators
+- Index annotations
+
+## 🎨 Visual Guidelines
+- Clean, professional database diagram style
+- Consistent color coding for key types
+- Clear relationship lines with proper cardinality notation
+- Field types and constraints visible
+- RLS security annotations
+
+## 📝 Generation Notes
+- Source: `/docs/artifacts/db-erd.md` (Mermaid ERD syntax)
+- Tool: Mermaid to PNG converter, or database design tools
+- Alternative: dbdiagram.io, PostgreSQL ERD tools
+- Include legend for symbols and color coding
