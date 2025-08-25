@@ -62,12 +62,12 @@ simulate_step() {
     local step_name="$1"
     local duration="$2"
     local status="${3:-success}"
-    
+
     echo -e "${YELLOW}🔄 ${step_name}...${NC}"
     if [ -n "$duration" ]; then
         sleep "$duration"
     fi
-    
+
     if [ "$status" = "success" ]; then
         echo -e "${GREEN}✅ ${step_name} completed${NC}"
     elif [ "$status" = "warning" ]; then

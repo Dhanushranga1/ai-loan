@@ -3,7 +3,7 @@
 
 export async function GET() {
   const startTime = process.hrtime.bigint()
-  
+
   // Gather system information for production monitoring
   const healthData = {
     ok: true,
@@ -24,17 +24,17 @@ export async function GET() {
       pid: process.pid
     }
   }
-  
+
   const endTime = process.hrtime.bigint()
   const responseTime = Number(endTime - startTime) / 1000000 // Convert to milliseconds
-  
+
   return new Response(
     JSON.stringify({
       ...healthData,
       responseTime: Math.round(responseTime * 100) / 100 // Round to 2 decimal places
     }),
     {
-      headers: { 
+      headers: {
         'content-type': 'application/json',
         'cache-control': 'no-cache, no-store, must-revalidate'
       },

@@ -55,7 +55,7 @@ print_warning() {
 simulate_step() {
     local step_name="$1"
     local duration="$2"
-    
+
     echo -e "${YELLOW}🔄 ${step_name}...${NC}"
     if [ -n "$duration" ]; then
         sleep "$duration"

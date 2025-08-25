@@ -178,8 +178,8 @@ curl http://vm-ip:3000/
 
 ---
 
-**Test Date**: August 25, 2025  
-**Deployment Target**: Production VM  
-**Pipeline**: Jenkins CI/CD  
-**Expected Duration**: 15 minutes  
+**Test Date**: August 25, 2025
+**Deployment Target**: Production VM
+**Pipeline**: Jenkins CI/CD
+**Expected Duration**: 15 minutes
 **Status**: Ready for execution
