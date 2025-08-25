@@ -1,5 +1,5 @@
 // Audit logging helper (server-side)
-import { createServerSupabaseClient } from './supabaseServer'
+import { createServerSupabaseClient, getServerUser } from './supabaseServer'
 
 export interface AuditLogData {
   action: string
@@ -14,20 +14,23 @@ export interface AuditLogData {
  */
 export async function insertAuditLog(data: AuditLogData): Promise<void> {
   try {
-    // TODO: Implement audit log insertion
-    const supabase = createServerSupabaseClient()
+    const user = await getServerUser()
+    if (!user) return // Skip if no user
     
-    const { data: user } = await supabase.auth.getUser()
-    if (!user?.user) return // Skip if no user
+    const supabase = await createServerSupabaseClient()
     
-    await supabase.from('audit_logs').insert({
-      actor: user.user.id,
+    const { error } = await supabase.from('audit_logs').insert({
+      actor: user.id,
       action: data.action,
       entity: data.entity,
       entity_id: data.entity_id,
       meta: data.meta || {},
       created_at: new Date().toISOString()
     })
+    
+    if (error) {
+      console.warn('Failed to insert audit log:', error)
+    }
   } catch (error) {
     // Best effort - don't throw on audit log failures
     console.warn('Failed to insert audit log:', error)
