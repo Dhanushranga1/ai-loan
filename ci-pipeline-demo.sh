@@ -71,7 +71,7 @@ fi
 print_stage "3. CODE QUALITY CHECKS"
 
 print_info "Running ESLint..."
-if command -v npm >/dev/null 2>&1 && [ -f "package.json" ] && npm run lint > /dev/null 2>&1; then
+if command -v npm >/dev/null 2>&1 && [ -f "package.json" ] && npm run lint:demo > /dev/null 2>&1; then
     print_success "Linting passed"
 else
     print_warning "Linting step simulated (demo mode)"
