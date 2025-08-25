@@ -11,38 +11,38 @@ export const LoanInputSchema = z.object({
     .min(1, 'Loan amount must be greater than 0')
     .max(100000000, 'Loan amount cannot exceed ₹10 crores')
     .finite('Loan amount must be a valid number'),
-    
+
   tenure_months: z
     .number({ message: 'Tenure must be a number' })
     .int('Tenure must be a whole number')
     .min(3, 'Minimum tenure is 3 months')
     .max(84, 'Maximum tenure is 84 months'),
-    
+
   purpose: z
     .string({ message: 'Loan purpose is required' })
     .min(3, 'Purpose must be at least 3 characters')
     .max(120, 'Purpose cannot exceed 120 characters')
     .trim()
     .refine(str => str.length > 0, 'Purpose cannot be empty'),
-    
+
   income: z
     .number({ message: 'Income must be a number' })
     .min(1, 'Monthly income must be greater than 0')
     .max(10000000, 'Monthly income cannot exceed ₹1 crore')
     .finite('Income must be a valid number'),
-    
+
   employment_length_years: z
     .number({ message: 'Employment length must be a number' })
     .min(0, 'Employment length cannot be negative')
     .max(40, 'Employment length cannot exceed 40 years')
     .finite('Employment length must be a valid number'),
-    
+
   credit_score: z
     .number({ message: 'Credit score must be a number' })
     .int('Credit score must be a whole number')
     .min(300, 'Credit score must be at least 300')
     .max(900, 'Credit score cannot exceed 900'),
-    
+
   dti_ratio: z
     .number({ message: 'DTI ratio must be a number' })
     .min(0, 'DTI ratio cannot be negative')
@@ -115,11 +115,11 @@ export type ErrorResponse = z.infer<typeof ErrorResponseSchema>
  */
 export function formatValidationErrors(error: z.ZodError): Record<string, string> {
   const errors: Record<string, string> = {}
-  
+
   error.issues.forEach((issue) => {
     const path = issue.path.join('.')
     errors[path] = issue.message
   })
-  
+
   return errors
 }

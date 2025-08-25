@@ -87,10 +87,36 @@ The AI Loan Approval System is a modern, full-stack web application that automat
    ```
 
 4. **Set up Supabase**
-   - Create a new Supabase project
-   - Run the migrations in `/supabase/migrations.sql`
-   - Apply RLS policies from `/supabase/policies.sql`
-   - Seed data with `/supabase/seed.sql`
+   
+   a. **Create a new Supabase project**
+   - Go to [https://supabase.com](https://supabase.com)
+   - Click "New Project"
+   - Choose your organization and create the project
+   - Wait for the project to initialize
+   
+   b. **Get your project credentials**
+   - Go to Settings > API
+   - Copy the Project URL and anon/public API key
+   - Copy the service_role key (keep this secure!)
+   
+   c. **Configure environment variables**
+   ```bash
+   # Update .env.local with your actual Supabase credentials
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+   ```
+   
+   d. **Run database migrations**
+   - Go to Supabase Dashboard > SQL Editor
+   - Copy and run the SQL from `/supabase/migrations.sql`
+   - This will create all tables, RLS policies, and triggers
+   
+   e. **Configure authentication**
+   - Go to Authentication > Settings
+   - Enable email authentication
+   - Optionally configure OAuth providers
+   - Set up email templates as needed
 
 5. **Run the development server**
    ```bash

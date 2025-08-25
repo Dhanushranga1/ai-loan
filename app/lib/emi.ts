@@ -17,19 +17,19 @@ export function calculateEMI(
   if (principal <= 0 || tenureMonths <= 0) {
     return 0
   }
-  
+
   const monthlyRate = annualRate / 12
-  
+
   // If no interest rate, simple division
   if (monthlyRate === 0) {
     return Math.round((principal / tenureMonths) * 100) / 100
   }
-  
+
   // EMI calculation using the standard formula
   const numerator = principal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)
   const denominator = Math.pow(1 + monthlyRate, tenureMonths) - 1
   const emi = numerator / denominator
-  
+
   return Math.round(emi * 100) / 100 // Round to 2 decimal places
 }
 
@@ -44,7 +44,7 @@ export function calculateDTI(emi: number, monthlyIncome: number): number {
   if (monthlyIncome <= 0 || emi < 0) {
     return emi < 0 ? 0 : 1 // Return 1 for zero income (worst case)
   }
-  
+
   const dti = emi / monthlyIncome
   return Math.round(dti * 10000) / 10000 // Round to 4 decimal places
 }
@@ -132,16 +132,16 @@ export function suggestOptimalTenure(
   targetDTI: number = 0.35
 ): number {
   const maxEMI = monthlyIncome * targetDTI
-  
+
   // Binary search for optimal tenure
   let minTenure = 3
   let maxTenure = 84
   let optimalTenure = 12
-  
+
   while (minTenure <= maxTenure) {
     const midTenure = Math.floor((minTenure + maxTenure) / 2)
     const emi = calculateEMI(principal, annualRate, midTenure)
-    
+
     if (emi <= maxEMI) {
       optimalTenure = midTenure
       maxTenure = midTenure - 1
@@ -149,6 +149,6 @@ export function suggestOptimalTenure(
       minTenure = midTenure + 1
     }
   }
-  
+
   return Math.max(3, Math.min(84, optimalTenure))
 }

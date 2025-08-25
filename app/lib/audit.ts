@@ -16,9 +16,9 @@ export async function insertAuditLog(data: AuditLogData): Promise<void> {
   try {
     const user = await getServerUser()
     if (!user) return // Skip if no user
-    
+
     const supabase = await createServerSupabaseClient()
-    
+
     const { error } = await supabase.from('audit_logs').insert({
       actor: user.id,
       action: data.action,
@@ -27,7 +27,7 @@ export async function insertAuditLog(data: AuditLogData): Promise<void> {
       meta: data.meta || {},
       created_at: new Date().toISOString()
     })
-    
+
     if (error) {
       console.warn('Failed to insert audit log:', error)
     }
