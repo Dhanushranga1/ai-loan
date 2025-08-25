@@ -9,7 +9,7 @@
 - [x] **Task 6**: Document Jenkins credentials setup and VM configuration procedures
 
 ## CI/CD Testing
-- [ ] **Task 7**: Create test branch/PR to verify CI pipeline (build, test, lint stages)
+- [x] **Task 7**: Create test branch/PR to verify CI pipeline (build, test, lint stages)
 - [ ] **Task 8**: Test main branch deployment to production VM
 - [ ] **Task 9**: Test rollback functionality and capture screenshots
 
