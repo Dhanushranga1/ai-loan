@@ -270,13 +270,10 @@ async function LoanDetailContent({ params }: { params: { id: string } }) {
         <div className="space-y-4">
           {decision ? (
             <DecisionCard
-              decision={{
-                decision: decision.decision,
-                score: decision.score,
-                reasons: decision.reasons,
-                timestamp: decision.created_at
-              }}
-              loanStatus={loan.status}
+              decision={decision.decision as 'approve' | 'reject' | 'needs_review'}
+              score={decision.score}
+              reasons={decision.reasons}
+              timestamp={decision.created_at}
             />
           ) : (
             <Card>
@@ -292,7 +289,12 @@ async function LoanDetailContent({ params }: { params: { id: string } }) {
               <CardContent>
                 <RunDecisionButton
                   loanId={loan.id}
-                  canDecide={loan.status === 'submitted' || loan.status === 'under_review'}
+                  currentStatus={loan.status}
+                  onDecisionMade={(decision) => {
+                    // TODO: Handle decision update
+                    console.log('Decision made:', decision)
+                  }}
+                  disabled={!(loan.status === 'submitted' || loan.status === 'under_review')}
                 />
               </CardContent>
             </Card>
@@ -303,7 +305,9 @@ async function LoanDetailContent({ params }: { params: { id: string } }) {
   )
 }
 
-export default function LoanDetailPage({ params }: { params: { id: string } }) {
+export default async function LoanDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  
   return (
     <Container>
       <div className="py-8">
@@ -312,7 +316,7 @@ export default function LoanDetailPage({ params }: { params: { id: string } }) {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
           </div>
         }>
-          <LoanDetailContent params={params} />
+          <LoanDetailContent params={{ id }} />
         </Suspense>
       </div>
     </Container>

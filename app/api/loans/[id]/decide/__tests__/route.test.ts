@@ -4,6 +4,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { NextRequest } from 'next/server'
 import { POST } from '../route'
+import type { User } from '@supabase/supabase-js'
 
 // Mock dependencies
 vi.mock('@/app/lib/auth', () => ({
@@ -39,7 +40,14 @@ import { scoreApplication } from '@/ai'
 import { insertAuditLog } from '@/app/lib/audit'
 
 describe('/api/loans/[id]/decide', () => {
-  const mockUser = { id: 'user-123', email: 'test@example.com' }
+  const mockUser: User = {
+    id: 'user-123',
+    email: 'test@example.com',
+    app_metadata: {},
+    user_metadata: {},
+    aud: 'authenticated',
+    created_at: '2023-01-01T00:00:00Z'
+  }
   const mockLoan = {
     id: 'loan-123',
     user_id: 'user-123',
@@ -48,9 +56,12 @@ describe('/api/loans/[id]/decide', () => {
     monthly_income: 100000,
     existing_debts: 20000,
     credit_score: 750,
+    employment_type: 'full_time',
     employment_years: 5,
     purpose: 'home',
-    status: 'submitted'
+    status: 'submitted',
+    created_at: '2023-01-01T00:00:00Z',
+    updated_at: '2023-01-01T00:00:00Z'
   }
   const mockFeatures = {
     credit_score: 750,
@@ -59,7 +70,9 @@ describe('/api/loans/[id]/decide', () => {
     amount: 1000000,
     tenure_months: 24,
     employment_years: 5,
-    purpose: 'home'
+    purpose: 'home',
+    emi: 45000,
+    dti_ratio: 0.2
   }
   const mockScoringResult = {
     decision: 'approve' as const,
@@ -115,9 +128,12 @@ describe('/api/loans/[id]/decide', () => {
 
   it('should return recent decision if exists (idempotency)', async () => {
     const recentDecision = {
+      id: 'decision-123',
+      loan_id: 'loan-123',
       decision: 'approve',
       score: 0.85,
       reasons: ['Strong credit score', 'Low DTI'],
+      input_hash: 'hash-123',
       created_at: '2024-01-15T10:00:00Z'
     }
 
@@ -238,7 +254,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/unknown/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'unknown' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'unknown' }) })
     const data = await response.json()
 
     expect(response.status).toBe(404)
