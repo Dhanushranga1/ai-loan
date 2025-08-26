@@ -24,7 +24,7 @@ vi.mock('@/lib/features', () => ({
   validateFeaturesForScoring: vi.fn()
 }))
 
-vi.mock('@/ai/scoring', () => ({
+vi.mock('@/ai', () => ({
   scoreApplication: vi.fn()
 }))
 
@@ -35,7 +35,7 @@ vi.mock('@/app/lib/audit', () => ({
 import { getUser } from '@/app/lib/auth'
 import { canMakeDecision, getRecentDecision, loanToApplicationData, persistDecision } from '@/lib/decision'
 import { extractFeatures, generateInputHash, validateFeaturesForScoring } from '@/lib/features'
-import { scoreApplication } from '@/ai/scoring'
+import { scoreApplication } from '@/ai'
 import { insertAuditLog } from '@/app/lib/audit'
 
 describe('/api/loans/[id]/decide', () => {
@@ -64,7 +64,15 @@ describe('/api/loans/[id]/decide', () => {
   const mockScoringResult = {
     decision: 'approve' as const,
     score: 0.85,
-    reasons: ['Strong credit score of 750', 'Low debt-to-income ratio']
+    reasons: ['Strong credit score of 750', 'Low debt-to-income ratio'],
+    features: {
+      credit_score_normalized: 0.85,
+      dti_ratio: 0.2,
+      dti_ratio_inverted: 0.8,
+      emi_to_income: 0.4,
+      employment_length_normalized: 0.8,
+      amount_vs_income: 10.0
+    }
   }
 
   beforeEach(() => {
@@ -81,7 +89,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(401)
@@ -98,7 +106,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(403)
@@ -126,7 +134,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(200)
@@ -163,7 +171,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(200)
@@ -213,7 +221,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(422)
@@ -247,7 +255,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(409)
@@ -272,7 +280,7 @@ describe('/api/loans/[id]/decide', () => {
     const request = new NextRequest('http://localhost/api/loans/loan-123/decide', {
       method: 'POST'
     })
-    const response = await POST(request, { params: { id: 'loan-123' } })
+    const response = await POST(request, { params: Promise.resolve({ id: 'loan-123' }) })
     const data = await response.json()
 
     expect(response.status).toBe(500)

@@ -140,7 +140,7 @@ async function decideHandler(
 }
 
 // Apply rate limiting to the decision endpoint
-export async function POST(request: NextRequest, context: { params: DecideParams }) {
+export async function POST(request: NextRequest, context: { params: Promise<DecideParams> }) {
   // Apply rate limiting
   const user = await getUser() // Get user for rate limiting identifier
   const identifier = getRateLimitIdentifier(request, user?.id)
@@ -168,14 +168,8 @@ export async function POST(request: NextRequest, context: { params: DecideParams
   }
 
   // Call the actual handler
-  const response = await decideHandler(request, context)
-
-  // Add rate limit headers to successful responses
-  response.headers.set('X-RateLimit-Limit', rateLimitResult.limit.toString())
-  response.headers.set('X-RateLimit-Remaining', rateLimitResult.remaining.toString())
-  response.headers.set('X-RateLimit-Reset', rateLimitResult.resetTime.toString())
-
-  return response
+  const params = await context.params
+  return decideHandler(request, { params })
 }
 
 // Helper function to get new loan status (duplicated from decision.ts to avoid circular import)
